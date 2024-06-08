@@ -1,0 +1,17 @@
+﻿
+<div class="skill">
+ 
+    <div class="logo-section">
+        <img src="@Model.ImageSrc" alt="Alternate Text" />
+    </div>
+    <div class="content-section">
+        <h3>@Model.Title</h3>
+        <p>@Model.Description</p>
+    </div>
+
+</div>
+
+@code {
+    [Parameter]
+    public SkillModel Model { get; set; } = null!;
+}

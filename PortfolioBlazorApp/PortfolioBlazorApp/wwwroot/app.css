@@ -80,22 +80,22 @@ body {
 }
 @media (min-width: 768px) {
   .container {
-    max-width: 720px;
+    max-width: 620px;
   }
 }
 @media (min-width: 992px) {
   .container {
-    max-width: 960px;
+    max-width: 760px;
   }
 }
 @media (min-width: 1200px) {
   .container {
-    max-width: 1140px;
+    max-width: 920px;
   }
 }
 @media (min-width: 1400px) {
   .container {
-    max-width: 1320px;
+    max-width: 920px;
   }
 }
 
@@ -184,6 +184,18 @@ html {
 }
 .theme-switch .slider.round:before {
   border-radius: 50%;
+}
+
+.skill {
+  background-color: var(--color-gray-800);
+  border-bottom: 2px solid var(--color-theme);
+  padding: 40px 15px;
+}
+.skill .logo-section {
+  margin-bottom: 30px;
+}
+.skill .content-section p {
+  font-size: 0.7rem;
 }
 
 .header {
@@ -307,7 +319,7 @@ html {
 
 .hero-section {
   margin-top: 130px;
-  margin-bottom: 500px;
+  margin-bottom: 100px;
 }
 .hero-section .container .title-section h3 {
   color: var(--color-theme);
@@ -361,4 +373,14 @@ html {
   100% {
     opacity: 1;
   }
+}
+.hidden {
+  display: none;
+}
+
+.skills .container .skills-section {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+  gap: 10px;
 }

@@ -1,9 +1,37 @@
 ﻿
-<section id="skills" class="skills-section">
+
+<section id="skills" class="skills">
     <div class="container">
-        <p>loreadaskfnfaklnlkanfklanflksanflknalflknasklfnlkafsk</p>
-        <p>loreadaskfnfaklnlkanfklanflksanflknalflknasklfnlkafsk</p>
-        <p>loreadaskfnfaklnlkanfklanflksanflknalflknasklfnlkafsk</p>
+        
+        <div class="skills-section">
+            <SkillComponent Model="skill1"  />
+            <SkillComponent Model="skill2" />
+            <SkillComponent Model="skill3" />
+        </div>
     </div>
 </section>
+
+
+@code {
+    private SkillModel skill1 = new SkillModel
+        {
+            ImageSrc = "",
+            Title = "Skill 1",
+            Description = "Description for Skill 1 sadasdas dhasdhkjh kkjhdkjahd jhajdkhas kjdhkajhdkad"
+        };
+
+    private SkillModel skill2 = new SkillModel
+        {
+            ImageSrc = "",
+            Title = "Skill 2",
+            Description = "Description for Skill 2 sadasd asdhas dhkjhd kkjhdkjah djhajdkha skjdhkajhdkad"
+        };
+
+    private SkillModel skill3 = new SkillModel
+        {
+            ImageSrc = "",
+            Title = "Skill 3",
+            Description = "Description for Skill 3 sad asdasdhasdh kjhdkkjh dkjahd   "
+        };
+}
 

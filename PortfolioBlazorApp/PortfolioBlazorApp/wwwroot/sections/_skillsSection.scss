@@ -1,0 +1,10 @@
+﻿.skills {
+    .container {
+        .skills-section {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            justify-content: center;
+            gap: 10px;
+        }
+    }
+}

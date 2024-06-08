@@ -1,6 +1,6 @@
 ﻿.hero-section {
     margin-top: 130px;
-    margin-bottom: 500px;
+    margin-bottom: 100px;
 
     .container {
         .title-section {
@@ -28,6 +28,8 @@
                     font-size: 5rem;
                     font-weight: 500;
                     bottom: -15px;
+
+                   
                 }
             }
         }
@@ -69,6 +71,9 @@
     100% {
         opacity: 1;
     }
+}
+.hidden {
+    display: none;
 }
 
 

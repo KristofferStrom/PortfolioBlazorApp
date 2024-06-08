@@ -5,7 +5,7 @@
 
         <div class="title-section">
             <h3>Hello, I’m Kristoffer Ström</h3>
-            <h1>@displayText<span class="@(cursorVisible ? "blink" : "")">|</span></h1>
+            <h1>@displayText<span class="@(cursorVisible ? "blink" : "") @(displayText == null ? "hidden" : "")">|</span></h1>
 
         </div>
         <div class="content-section">
@@ -24,7 +24,7 @@
 </section>
 
 @code {
-    private string displayText = "";
+    private string? displayText;
     private string fullText = ".NET Developer";
     private bool cursorVisible = false;
 
