@@ -1,0 +1,58 @@
+﻿@inject IJSRuntime JSRuntime
+
+<section class="hero-section">
+    <div class="container">
+
+        <div class="title-section">
+            <h3>Hello, I’m Kristoffer Ström</h3>
+            <h1 class="hidden" @ref="typingText">.NET Developer</h1>
+        </div>
+        <div class="content-section">
+            <p>
+                I’m from Singapore and I have been working as a Product Designer for more than 7 years.
+                I’ve worked for a Hanziree company Pabloo as a Product Designer and Front-end Developer for 3 years.
+            </p>
+        </div>
+        <div class="btn-section">
+            <a href="mailto:kristoffer.strom@hotmail.se" class="btn btn-theme"><i class="fa-sharp fa-regular fa-envelope"></i>Email Me</a>
+            <a class="btn btn-secondary"> <i class="fa-regular fa-download"></i>Download CV</a>
+        </div>
+
+    </div>
+
+</section>
+
+@code {
+    ElementReference typingText;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("typeWriter", typingText);
+        }
+    }
+}
+
+<script>
+    window.typeWriter = function (element) {
+        var i = 0;
+        var txt = element.innerText; // The text to be typed out
+        var speed = 100; // The speed/duration of the effect in milliseconds
+
+        function typeWriter() {
+            if (i < txt.length) {
+                element.innerHTML += txt.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+
+        // Clear the text in the element, remove the hidden class, and start the typing effect
+        element.innerText = '';
+        element.style.display = 'block';
+        typeWriter();
+    }
+
+
+</script>

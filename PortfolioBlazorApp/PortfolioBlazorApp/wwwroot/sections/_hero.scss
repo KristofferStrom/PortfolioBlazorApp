@@ -1,0 +1,54 @@
+﻿.hero-section {
+    margin-top: 130px;
+    margin-bottom: 500px;
+
+    .container {
+        .title-section {
+            h3 {
+                color: var(--color-theme);
+                font-weight: 400;
+                margin: 0;
+                margin-left: 17px;
+            }
+
+            h1 {
+                font-size: 4rem;
+                margin: 0;
+                position: relative;
+                display: inline-block;
+                white-space: nowrap;
+                overflow: hidden;
+                max-width: 475px; // Replace 10em with the measured width of your text
+            }
+        }
+
+        .content-section {
+            width: 400px;
+
+            p {
+                font-size: 0.7rem;
+                color: var(--color-gray-600);
+            }
+        }
+
+        .btn-section {
+            display: flex;
+            gap: 25px;
+            margin-top: 30px;
+
+            .btn {
+                align-items: end;
+
+                i {
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+
