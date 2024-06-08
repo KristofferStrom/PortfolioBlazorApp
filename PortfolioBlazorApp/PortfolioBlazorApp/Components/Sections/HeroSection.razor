@@ -1,11 +1,12 @@
-﻿@inject IJSRuntime JSRuntime
+﻿
 
 <section class="hero-section">
     <div class="container">
 
         <div class="title-section">
             <h3>Hello, I’m Kristoffer Ström</h3>
-            <h1 class="hidden" @ref="typingText">.NET Developer</h1>
+            <h1>@displayText<span class="@(cursorVisible ? "blink" : "")">|</span></h1>
+
         </div>
         <div class="content-section">
             <p>
@@ -23,36 +24,24 @@
 </section>
 
 @code {
-    ElementReference typingText;
+    private string displayText = "";
+    private string fullText = ".NET Developer";
+    private bool cursorVisible = false;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            await JSRuntime.InvokeVoidAsync("typeWriter", typingText);
+            for (int i = 0; i < fullText.Length; i++)
+            {
+                displayText += fullText[i];
+                StateHasChanged();
+                await Task.Delay(100);
+            }
+
+            cursorVisible = true;
+            StateHasChanged();
         }
     }
 }
 
-<script>
-    window.typeWriter = function (element) {
-        var i = 0;
-        var txt = element.innerText; // The text to be typed out
-        var speed = 100; // The speed/duration of the effect in milliseconds
-
-        function typeWriter() {
-            if (i < txt.length) {
-                element.innerHTML += txt.charAt(i);
-                i++;
-                setTimeout(typeWriter, speed);
-            }
-        }
-
-        // Clear the text in the element, remove the hidden class, and start the typing effect
-        element.innerText = '';
-        element.style.display = 'block';
-        typeWriter();
-    }
-
-
-</script>

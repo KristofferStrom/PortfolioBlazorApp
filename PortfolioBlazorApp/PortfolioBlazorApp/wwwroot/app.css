@@ -319,10 +319,12 @@ html {
   font-size: 4rem;
   margin: 0;
   position: relative;
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  max-width: 475px;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+.hero-section .container .title-section h1 .blink {
+  animation: blink 1s infinite;
 }
 .hero-section .container .content-section {
   width: 400px;
@@ -343,6 +345,14 @@ html {
   margin-right: 5px;
 }
 
-.hidden {
-  display: none;
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
