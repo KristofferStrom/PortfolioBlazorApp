@@ -326,6 +326,12 @@ html {
 .hero-section .container .title-section h1 .blink {
   animation: blink 1s infinite;
 }
+.hero-section .container .title-section h1 span {
+  position: absolute;
+  font-size: 5rem;
+  font-weight: 500;
+  bottom: -15px;
+}
 .hero-section .container .content-section {
   width: 400px;
 }

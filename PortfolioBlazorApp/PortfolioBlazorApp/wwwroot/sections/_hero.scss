@@ -23,6 +23,12 @@
                     animation: blink 1s infinite;
                 }
 
+                span {
+                    position: absolute;
+                    font-size: 5rem;
+                    font-weight: 500;
+                    bottom: -15px;
+                }
             }
         }
 
