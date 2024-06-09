@@ -1,9 +1,16 @@
 ﻿.theme-switch {
+
+    label {
+        font-size: 0.8rem;
+    }
+
     .switch {
         position: relative;
         display: inline-block;
-        width: 46px;
-        height: 24px;
+        width: 33px;
+        height: 17px;
+
+
 
         input {
             opacity: 0;
@@ -19,7 +26,7 @@
             }
 
             &:checked + .slider:before {
-                transform: translateX(23px);
+                transform: translateX(13px);
             }
         }
     }
@@ -38,10 +45,10 @@
         &:before {
             position: absolute;
             content: "";
-            height: 16px;
-            width: 16px;
+            height: 12px;
+            width: 12px;
             left: 4px;
-            bottom: 4px;
+            bottom: 2.5px;
             background-color: white;
             -webkit-transition: 0.4s;
             transition: 0.4s;

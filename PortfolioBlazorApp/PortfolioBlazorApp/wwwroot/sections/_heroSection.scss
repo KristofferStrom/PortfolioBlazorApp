@@ -1,9 +1,13 @@
 ﻿.hero-section {
-    margin-top: 130px;
-    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
 
     .container {
+      
         .title-section {
+
             h3 {
                 color: var(--color-theme);
                 font-weight: 400;
@@ -28,8 +32,6 @@
                     font-size: 5rem;
                     font-weight: 500;
                     bottom: -15px;
-
-                   
                 }
             }
         }
@@ -74,6 +76,8 @@
 }
 .hidden {
     display: none;
+
 }
+
 
 

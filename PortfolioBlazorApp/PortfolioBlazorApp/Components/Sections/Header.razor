@@ -3,76 +3,82 @@
 <header class="header" @ref="headerRef">
     <div class="container">
         <div class="logo">
-            <NavLink class="nav-link"  href="/" @onclick='() => ScrollToFragment("")'>Kristofferström<span>.</span></NavLink>
+            <a class="nav-link"  href="/" @onclick='() => ScrollToFragment("")'>Kristofferström<span>.</span></a>
         </div>
 
         <nav class="nav-menu">
-            <NavLink class="nav-link" href="/" @onclick='() => ScrollToFragment("")'>Home</NavLink>
-            <NavLink class="nav-link" href="#skills" @onclick='() => ScrollToFragment("skills")'>Skills</NavLink>
-            <NavLink class="nav-link" href="#projects" @onclick='() => ScrollToFragment("projects")'>Projects</NavLink>
-            <NavLink class="nav-link" href="#contact" @onclick='() => ScrollToFragment("contact")'>Contact</NavLink>
+            <a class="@(_currentSectionId == "skills" ? "active nav-link" : "nav-link")" href="#skills" @onclick='() => ScrollToFragment("skills")'>Skills</a>
+            <a class="@(_currentSectionId == "projects" ? "active nav-link" : "nav-link")" href="#projects" @onclick='() => ScrollToFragment("projects")'>Projects</a>
+            <a class="@(_currentSectionId == "contact" ? "active nav-link" : "nav-link")" href="#contact" @onclick='() => ScrollToFragment("contact")'>Contact</a>
+
         </nav>
 
-        <div class="theme-switch">
-            <label for="theme-switch-mode">Light</label>
-            <label class="switch">
-                <input id="theme-switch-mode" type="checkbox" />
-                <span class="slider round"></span>
-            </label>
-            <label for="theme-switch-mode">Dark</label>
-        </div>
+      
+      
 
-        <button class="btn btn-menu">
-            <i class="fa-regular fa-bars"></i>
-        </button>
     </div>
 </header>
 
 @code {
     ElementReference headerRef;
+    private string _currentSectionId = "";
 
     private async Task ScrollToFragment(string elementId)
     {
         await JSRuntime.InvokeVoidAsync("blazorHelpers.scrollToFragment", elementId);
     }
+
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var dotnetHelper = DotNetObjectReference.Create(this);
+            await JSRuntime.InvokeVoidAsync("scrollHandler.listenForScroll", dotnetHelper);
+        }
+    }
+
+    [JSInvokable]
+    public void OnScroll(string currentSectionId)
+    {
+        if(_currentSectionId != currentSectionId)
+        {
+            _currentSectionId = currentSectionId;
+            StateHasChanged();
+        }
+       
+    }
 }
-
-
 
 <script>
 
+    window.scrollHandler = {
+        listenForScroll: function (dotnetHelper) {
+            window.onscroll = function () {
+                var sections = document.querySelectorAll('section');
+                var currentSectionId = "";
 
-    window.onscroll = function () {
-        var header = document.querySelector('.header');
-        if (window.pageYOffset > 0) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
+                sections.forEach(function (section) {
+                    var sectionTop = section.offsetTop;
+                    var sectionHeight = section.offsetHeight;
+
+                    if (pageYOffset >= (sectionTop - sectionHeight / 3) && pageYOffset < (sectionTop + sectionHeight - sectionHeight / 3)) {
+                        currentSectionId = section.id;
+                    }
+                });
+
+                dotnetHelper.invokeMethodAsync('OnScroll', currentSectionId);
+            }
         }
     };
 
     window.blazorHelpers = {
-        updateActiveLink: () => {
-            var hash = window.location.hash ? '#' + window.location.hash.substring(1) : '/';
-            console.log('Current hash:', hash);
-            var links = document.querySelectorAll('.nav-link');
-            links.forEach(function (link) {
-                console.log('Checking link:', link.getAttribute('href'));
-                if (link.getAttribute('href') === hash) {
-                    console.log('Adding active class to link:', link);
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
-            });
-        },
         scrollToFragment: (elementId) => {
             var element = document.getElementById(elementId);
 
             if (element) {
                 window.scrollTo(0, element.offsetTop);
             }
-            window.blazorHelpers.updateActiveLink();
         }
     };
 

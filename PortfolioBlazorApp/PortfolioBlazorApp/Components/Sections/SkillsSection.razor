@@ -2,9 +2,20 @@
 
 <section id="skills" class="skills">
     <div class="container">
-        
+
+        <div class="title-section">
+
+            <h3>My experience so far...</h3>
+            <div class="services">
+                <h4><span>-----------</span> Color mode</h4>
+                <p>Easily switch between dark and light mode for a more comfortable and customizable viewing experience.</p>
+                <ColorModeComponent />
+            </div>
+
+        </div>
+
         <div class="skills-section">
-            <SkillComponent Model="skill1"  />
+            <SkillComponent Model="skill1" />
             <SkillComponent Model="skill2" />
             <SkillComponent Model="skill3" />
         </div>
@@ -12,26 +23,28 @@
 </section>
 
 
+
+
 @code {
     private SkillModel skill1 = new SkillModel
         {
-            ImageSrc = "",
-            Title = "Skill 1",
-            Description = "Description for Skill 1 sadasdas dhasdhkjh kkjhdkjahd jhajdkhas kjdhkajhdkad"
+            ImageSrc = "fa-solid fa-code",
+            Title = "Frontend",
+            Description = "I have experience with React and Blazor, the framework I used to build this website. In addition to these frameworks, I have skills in HTML, CSS (including Tailwind and Sass), as well as jQuery and vanilla JavaScript."
         };
 
     private SkillModel skill2 = new SkillModel
         {
-            ImageSrc = "",
-            Title = "Skill 2",
-            Description = "Description for Skill 2 sadasd asdhas dhkjhd kkjhdkjah djhajdkha skjdhkajhdkad"
+            ImageSrc = "fa-regular fa-database",
+            Title = "Backend",
+            Description = "I believe my greatest strengths lie in backend development. I have experience in areas such as web APIs, ASP.NET MVC, SQL databases and microservices."
         };
 
     private SkillModel skill3 = new SkillModel
         {
-            ImageSrc = "",
-            Title = "Skill 3",
-            Description = "Description for Skill 3 sad asdasdhasdh kjhdkkjh dkjahd   "
+            ImageSrc = "fa-light fa-rocket",
+            Title = "Other",
+            Description = "Throughout my education, I engaged in diverse group projects, adopting agile methods. I also gained experience in creating diagrams like sequence and activity diagrams."
         };
 }
 

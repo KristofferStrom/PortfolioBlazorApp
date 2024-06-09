@@ -5,9 +5,10 @@
     --color-gray-300: #E2E5F1;
     --color-gray-400: #D4D7E5;
     --color-gray-500: #B4B7C9;
-    --color-gray-600: #9397AD;
+    --color-gray-600: #808080;
     --color-gray-700: #565973;
-    --color-gray-800: #33354D;
+    --color-gray-800: #313131;
+    --color-gray-800-o: rgba(49, 49, 49, 0.5);
     --color-gray-900: #0B0F19;
     --color-gray-900-o: rgba(11, 15, 25, 0.5);
     --color-white: #FFFFFF;
@@ -26,9 +27,9 @@
 
 :root.dark {
     --color-gray-000: #0B0F19;
-    --color-gray-100: #33354D;
+    --color-gray-100: #313131;
     --color-gray-200: #565973;
-    --color-gray-300: #9397AD;
+    --color-gray-300: #808080;
     --color-gray-400: #B4B7C9;
     --color-gray-500: #D4D7E5;
     --color-gray-600: #E2E5F1;
