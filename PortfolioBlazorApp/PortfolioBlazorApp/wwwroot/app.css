@@ -126,17 +126,20 @@ html {
   background-color: var(--color-theme);
   color: var(--color-gray-900);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.09);
+  border: 2px solid var(--color-theme);
 }
 .btn-theme:hover {
   background-color: var(--color-theme-o);
+  border: 2px solid var(--color-theme-o);
 }
 
 .btn-secondary {
   background-color: transparent;
   color: var(--color-gray-000);
+  border: 2px solid var(--color-theme);
 }
 .btn-secondary:hover {
-  color: var(--color-theme-o);
+  border: 2px solid var(--color-gray-000);
 }
 
 .theme-switch label {
@@ -270,16 +273,16 @@ html {
   animation: slideInFromRight 0.8s ease-out forwards;
 }
 .header .container .nav-menu .nav-link:nth-child(1) {
-  animation-delay: 0.5s;
+  animation-delay: 0.3s;
 }
 .header .container .nav-menu .nav-link:nth-child(2) {
-  animation-delay: 1s;
+  animation-delay: 0.6s;
 }
 .header .container .nav-menu .nav-link:nth-child(3) {
-  animation-delay: 1.5s;
+  animation-delay: 0.9s;
 }
 .header .container .nav-menu .nav-link:nth-child(4) {
-  animation-delay: 2s;
+  animation-delay: 1.2s;
 }
 @media (min-width: 1200px) {
   .header .container .nav-menu .nav-link {
@@ -310,34 +313,48 @@ html {
   justify-content: center;
   height: 100vh;
 }
-.hero-section .container .title-section h3 {
-  color: var(--color-theme);
-  font-weight: 400;
-  margin: 0;
-  margin-left: 17px;
-}
 .hero-section .container .title-section h1 {
-  font-size: 4rem;
+  font-size: 2.5rem;
   margin: 0;
   position: relative;
   border: none;
   outline: none;
   box-shadow: none;
 }
+@media (min-width: 1200px) {
+  .hero-section .container .title-section h1 {
+    height: 1.3em;
+    font-size: 4rem;
+    margin-left: -17px;
+  }
+}
 .hero-section .container .title-section h1 .blink {
   animation: blink 1s infinite;
 }
 .hero-section .container .title-section h1 span {
   position: absolute;
-  font-size: 5rem;
+  font-size: 3.3rem;
   font-weight: 500;
-  bottom: -15px;
+  bottom: -11px;
+}
+@media (min-width: 1200px) {
+  .hero-section .container .title-section h1 span {
+    font-size: 5rem;
+    font-weight: 500;
+    bottom: -29px;
+  }
 }
 .hero-section .container .content-section {
-  width: 400px;
+  max-width: 500px;
+  margin-top: 30px;
+}
+.hero-section .container .content-section h3 {
+  color: var(--color-theme);
+  font-weight: 400;
+  margin: 0;
 }
 .hero-section .container .content-section p {
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   color: var(--color-gray-600);
 }
 .hero-section .container .btn-section {
@@ -345,11 +362,37 @@ html {
   gap: 25px;
   margin-top: 30px;
 }
+.hero-section .container .btn-section a {
+  transform: translateX(-100%);
+  opacity: 0;
+}
 .hero-section .container .btn-section .btn {
-  align-items: end;
+  width: 100%;
+  text-align: center;
+}
+@media (min-width: 1200px) {
+  .hero-section .container .btn-section .btn {
+    width: auto;
+    margin-top: 30px;
+  }
 }
 .hero-section .container .btn-section .btn i {
   margin-right: 5px;
+}
+.hero-section .container .btn-section.show a {
+  animation: slideInFromLeft 1s ease-out forwards;
+}
+.hero-section .container .btn-section.show .btn-email {
+  animation-delay: 0.5s;
+}
+.hero-section .container .btn-section.show .btn-download {
+  animation-delay: 0s;
+}
+.hero-section .container .content-section, .hero-section .container .btn-section {
+  /*opacity: 0;*/
+}
+.hero-section .container .fade-in {
+  animation: fadeIn 2s ease-out forwards;
 }
 
 @keyframes blink {
@@ -363,8 +406,26 @@ html {
     opacity: 1;
   }
 }
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 .hidden {
-  display: none;
+  visibility: hidden;
 }
 
 .skills {

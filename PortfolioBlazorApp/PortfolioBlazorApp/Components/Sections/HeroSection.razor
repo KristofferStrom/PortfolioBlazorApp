@@ -2,20 +2,22 @@
     <div class="container">
 
         <div class="title-section">
-            <h3>Hello, I’m Kristoffer Ström</h3>
-            <h1>@displayText<span class="@(cursorVisible ? "blink" : "") @(displayText == null ? "hidden" : "")">|</span></h1>
+            <h1>@displayText<span class="blink">|</span></h1>
+
+
         </div>
 
-        <div class="content-section">
+        <div class="content-section @(showContentSection ? "fade-in" : "hidden")">
+            <h3>Hello, I’m Kristoffer Ström</h3>
             <p>
                 I’m from Singapore and I have been working as a Product Designer for more than 7 years.
                 I’ve worked for a Hanziree company Pabloo as a Product Designer and Front-end Developer for 3 years.
             </p>
         </div>
 
-        <div class="btn-section">
-            <a href="mailto:kristoffer.strom@hotmail.se" class="btn btn-theme"><i class="fa-sharp fa-regular fa-envelope"></i>Email Me</a>
-            <a class="btn btn-secondary"> <i class="fa-regular fa-download"></i>Download CV</a>
+        <div class="btn-section @(showBtnSection ? "show" : "hidden")">
+            <a href="mailto:kristoffer.strom@hotmail.se" class="btn btn-theme btn-email"><i class="fa-sharp fa-regular fa-envelope"></i>Email Me</a>
+            <a class="btn btn-secondary"> <i class="fa-regular fa-download btn-download"></i>Download CV</a>
         </div>
 
     </div>
@@ -25,20 +27,33 @@
     private string? displayText;
     private string fullText = ".NET Developer";
     private bool cursorVisible = false;
+    private bool showContentSection = false;
+    private bool showBtnSection = false;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
+            await Task.Delay(2500); // Wait for 2 seconds while the span is blinking
+
             for (int i = 0; i < fullText.Length; i++)
             {
                 displayText += fullText[i];
                 StateHasChanged();
                 await Task.Delay(100);
-            }
 
-            cursorVisible = true;
-            StateHasChanged();
+                if(i == fullText.Length - 1)
+                {
+                    cursorVisible = true;
+                    await Task.Delay(1000);
+                    showContentSection = true;
+                    StateHasChanged();
+                    await Task.Delay(1000);
+                    showBtnSection = true;
+                    StateHasChanged();
+                }
+            }
+            
         }
     }
 }
