@@ -1,12 +1,27 @@
-﻿<div class="theme-switch">
+﻿@inject IJSRuntime JSRuntime
+
+<div class="theme-switch">
     <label for="theme-switch-mode">Light</label>
     <label class="switch">
-        <input id="theme-switch-mode" type="checkbox" />
+        <input id="theme-switch-mode" type="checkbox" true checked @onchange="SwitchTheme" />
         <span class="slider round"></span>
     </label>
     <label for="theme-switch-mode">Dark</label>
 </div>
 
 @code {
+    private bool IsLight { get; set; } = false;
 
+    private void SwitchTheme(ChangeEventArgs e)
+    {
+        IsLight = (bool)e.Value;
+        if (!IsLight)
+        {
+            JSRuntime.InvokeVoidAsync("changeThemeToLight");
+        }
+        else
+        {
+            JSRuntime.InvokeVoidAsync("changeThemeToDark");
+        }
+    }
 }

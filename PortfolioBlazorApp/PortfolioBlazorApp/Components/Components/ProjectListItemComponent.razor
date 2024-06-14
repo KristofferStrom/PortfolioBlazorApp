@@ -1,0 +1,29 @@
+﻿<div class="project @CssClass">
+    <a class="img-section" href="/project/@Model.Id">
+        <img src="@Model.ImageSrc" alt="@Model.Title" />
+        <div class="overlay">
+            @if(Model.Tags != null)
+            {
+                <h4>Includes</h4>
+                <ul>
+                    @foreach (var tag in Model.Tags)
+                    {
+                        <li>@tag</li>
+                    }
+                </ul>
+            }
+        </div>
+       
+    </a>
+    <div class="content-section">
+        <h3>@Model.Title</h3>
+        <a href="/project/@Model.Id" class="btn">See project<i class="fa-thin fa-arrow-up-right"></i></a>
+    </div>
+</div>
+
+@code {
+    [Parameter] public ProjectListItem Model { get; set; } = null!;
+    [Parameter] public string CssClass { get; set; } = "";
+}
+
+

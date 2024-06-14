@@ -1,20 +1,17 @@
 ﻿@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
 
 <header class="header" @ref="headerRef">
     <div class="container">
         <div class="logo">
-            <a class="nav-link"  href="/" @onclick='() => ScrollToFragment("")'>Kristofferström<span>.</span></a>
+            <a class="nav-link" @onclick='() => HandleClick("")' href="/">Kristofferström<span>.</span></a>
         </div>
 
         <nav class="nav-menu">
-            <a class="@(_currentSectionId == "skills" ? "active nav-link" : "nav-link")" href="#skills" @onclick='() => ScrollToFragment("skills")'>Skills</a>
-            <a class="@(_currentSectionId == "projects" ? "active nav-link" : "nav-link")" href="#projects" @onclick='() => ScrollToFragment("projects")'>Projects</a>
-            <a class="@(_currentSectionId == "contact" ? "active nav-link" : "nav-link")" href="#contact" @onclick='() => ScrollToFragment("contact")'>Contact</a>
-
+            <NavLink class="@(_currentUrl == "skills" ? "active nav-link link" : "nav-link link")" @onclick='() => HandleClick("skills")' href="#skills">Skills</NavLink>
+            <NavLink class="@(_currentUrl == "projects" ? "active nav-link link" : "nav-link link")" @onclick='() => HandleClick("projects")' href="#projects">Projects</NavLink>
+            <a href="mailto:kristoffer.strom@hotmail.se" class="btn btn-theme btn-email link"><i class="fa-sharp fa-regular fa-envelope"></i>Email Me</a>
         </nav>
-
-      
-      
 
     </div>
 </header>
@@ -22,12 +19,7 @@
 @code {
     ElementReference headerRef;
     private string _currentSectionId = "";
-
-    private async Task ScrollToFragment(string elementId)
-    {
-        await JSRuntime.InvokeVoidAsync("blazorHelpers.scrollToFragment", elementId);
-    }
-
+    private string _currentUrl = "";
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -38,23 +30,44 @@
         }
     }
 
-    [JSInvokable]
-    public void OnScroll(string currentSectionId)
+    private async Task HandleClick(string sectionId)
     {
-        if(_currentSectionId != currentSectionId)
-        {
-            _currentSectionId = currentSectionId;
-            StateHasChanged();
-        }
-       
+        await JSRuntime.InvokeVoidAsync("scrollHandler.disableUserScrolling");
+        await FetchFragment();
+        await JSRuntime.InvokeVoidAsync("scrollHandler.enableUserScrolling");
     }
+
+    private async Task FetchFragment()
+    {
+        _currentUrl = await JSRuntime.InvokeAsync<string>("getFragment");
+        StateHasChanged(); // Uppdatera komponenten för att visa det nya värdet
+    }
+
+    [JSInvokable]
+    public async Task OnScroll(string currentSectionId)
+    {
+
+        if (currentSectionId != "")
+            await JSRuntime.InvokeVoidAsync("blazorHelpers.changeUrl", "#" + currentSectionId);
+        else
+            await JSRuntime.InvokeVoidAsync("blazorHelpers.changeUrl", "");
+            
+        await FetchFragment();
+        
+    }
+
+
 }
 
 <script>
 
     window.scrollHandler = {
+        isUserScrolling: true, // Initialisera flaggan
+
         listenForScroll: function (dotnetHelper) {
-            window.onscroll = function () {
+            window.addEventListener('scroll', () => {
+                if (!this.isUserScrolling) return; // Kontrollera flaggan innan du fortsätter
+
                 var sections = document.querySelectorAll('section');
                 var currentSectionId = "";
 
@@ -68,18 +81,34 @@
                 });
 
                 dotnetHelper.invokeMethodAsync('OnScroll', currentSectionId);
-            }
+            });
+        },
+
+        disableUserScrolling: function () {
+            this.isUserScrolling = false;
+        },
+
+        enableUserScrolling: function () {
+            setTimeout(() => {
+                this.isUserScrolling = true;
+            }, 500); // Justera fördröjningen efter behov
         }
     };
+
 
     window.blazorHelpers = {
-        scrollToFragment: (elementId) => {
-            var element = document.getElementById(elementId);
-
-            if (element) {
-                window.scrollTo(0, element.offsetTop);
-            }
+        changeUrl: (newUrl) => {
+            window.history.pushState({}, '', newUrl);
         }
     };
+
+    window.getFragment = () => {
+        return window.location.hash.substring(1);
+    }
+
+
+  
+
+
 
 </script>

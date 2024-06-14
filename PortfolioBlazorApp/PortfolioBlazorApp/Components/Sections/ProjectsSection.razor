@@ -1,0 +1,32 @@
+﻿
+<section id="projects" class="projects">
+    <div class="container">
+         <TitleComponent Title="Recent Work" CssClass="title" />
+        <div class="title-section">
+            <div class="titles">
+                <h3>Some of my favorite projects.</h3>
+            </div>
+            <div class="btn-view-all">
+                <button class="btn btn-secondary">View All Projects</button>
+            </div>
+        </div>
+
+        <div class="projects-section">
+            @foreach (var project in projects)
+            {
+                <ProjectListItemComponent Model="project" CssClass="listItem" />
+            }
+        </div>
+    </div>
+</section>
+
+@code {
+    private List<ProjectListItem> projects = new();
+
+    protected override void OnInitialized()
+    {
+       projects = ProjectService.GetProjects();
+    }
+
+
+}

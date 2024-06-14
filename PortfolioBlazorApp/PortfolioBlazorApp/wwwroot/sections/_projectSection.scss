@@ -1,0 +1,42 @@
+﻿.projects {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--color-gray-medium);
+    padding-top: 80px;
+
+    .container {
+        .title {
+            margin-bottom: 30px;
+        }
+
+        .title-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .titles {
+
+
+                h3 {
+                    font-size: 2rem;
+                    width: 60%;
+                }
+            }
+
+            .btn-view-all {
+            }
+        }
+
+        .projects-section {
+            display: grid;
+            grid-template-columns: auto auto;
+            justify-content: space-between;
+            gap: 15px;
+
+            .listItem {
+                margin-bottom: 20px;
+            }
+        }
+    }
+}

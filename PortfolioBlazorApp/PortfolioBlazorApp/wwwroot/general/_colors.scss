@@ -1,53 +1,27 @@
 ﻿:root {
-    --color-gray-000: #FFFFFF;
-    --color-gray-100: #F3F6FF;
-    --color-gray-200: #EFF2FC;
-    --color-gray-300: #E2E5F1;
-    --color-gray-400: #D4D7E5;
-    --color-gray-500: #B4B7C9;
-    --color-gray-600: #808080;
-    --color-gray-700: #565973;
-    --color-gray-800: #313131;
-    --color-gray-800-o: rgba(49, 49, 49, 0.5);
-    --color-gray-900: #0B0F19;
-    --color-gray-900-o: rgba(11, 15, 25, 0.5);
-    --color-white: #FFFFFF;
-    --color-black: #000000;
-    --color-gray: #EFF2FC;
+    --color-primary: #0B0F19;
+    --color-primary-o: rgba(11, 15, 25, 0.5);
+    --color-secondary: #E2E5F1;
+    --color-text-primary: #E2E5F1;
+    --color-text-secondary: #808080;
+    --color-gray-medium: #313131;
+    --color-gray-dark: #2B2B2B;
+    --color-gray-dark-o: rgba(43, 43, 43, 0.5);
     --color-theme: #FFD700;
     --color-theme-o: rgba(255, 215, 0, 0.8);
-    --color-danger: #F5D7DA;
-    --color-danger-dark: #e57e88;
-    --color-success: #bcf7d2;
-    --color-success-dark: #22C55E;
-    --color-warning: #ffe8ad;
-    --color-info: #cfdefd;
-    --font-standard: "Manrope", sans-serif;
 }
 
-:root.dark {
-    --color-gray-000: #0B0F19;
-    --color-gray-100: #313131;
-    --color-gray-200: #565973;
-    --color-gray-300: #808080;
-    --color-gray-400: #B4B7C9;
-    --color-gray-500: #D4D7E5;
-    --color-gray-600: #E2E5F1;
-    --color-gray-700: #EFF2FC;
-    --color-gray-800: #F3F6FF;
-    --color-gray-900: #FFFFFF;
-    --color-gray-900-o: rgba(255, 255, 255, 0.5);
-    --color-white: #FFFFFF;
-    --color-black: #000000;
-    --color-theme: #FFD700;
-    --color-theme-o: rgba(255, 215, 0, 0.8);
-    --color-danger: #F5D7DA;
-    --color-danger-dark: #e57e88;
-    --color-success: #bcf7d2;
-    --color-success-dark: #22C55E;
-    --color-warning: #ffe8ad;
-    --color-info: #cfdefd;
-    --font-standard: "Manrope", sans-serif;
+:root.light {
+    --color-primary: white;
+    --color-primary-o: rgba(255, 255, 255, 0.5);
+    --color-secondary: #0B0F19;
+    --color-text-primary: #0B0F19;
+    --color-text-secondary: #808080;
+    --color-gray-medium: #E2E5F1;
+    --color-gray-dark: #BEBEBE;
+    --color-gray-dark-o: rgba(190, 190, 190, 0.2);
+    --color-theme: #CCB100;
+    --color-theme-o: rgba(204, 177, 0, 0.8);
 }
 
 $background-color: #0B0F19;

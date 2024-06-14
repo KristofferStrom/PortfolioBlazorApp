@@ -8,7 +8,6 @@
         .title-section {
             display: flex;
             justify-content: space-between;
-            align-items: top;
 
             h3 {
                 font-size: 2.5rem;
@@ -19,20 +18,13 @@
             .services {
                 width: 32%;
 
-                h4 {
-                    margin-bottom: 0;
+                .title {
                     margin-top: 10px;
-                    color: var(--color-theme);
-
-                    span {
-                        letter-spacing: -1px;
-                        margin-right: 6px;
-                    }
                 }
 
                 p {
                     font-size: 0.7rem;
-                    color: var(--color-gray-600);
+                    color: var(--color-text-secondary);
                 }
             }
         }

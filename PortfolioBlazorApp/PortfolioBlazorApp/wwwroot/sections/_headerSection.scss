@@ -1,8 +1,8 @@
 ﻿
 
 .header {
-    background-color: var(--color-gray-900-o);
-    padding: 20px 0;
+    background-color: var(--color-primary-o);
+    padding: 10px 0;
     position: fixed;
     top: 0;
     width: 100%;
@@ -10,9 +10,12 @@
     font-weight: 600;
 
     .container {
-        display: flex;
+        position: relative;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-areas: "logo nav";
         align-items: center;
-        justify-content: space-between;
+        
 
 
         .logo {
@@ -38,11 +41,18 @@
                 gap: 40px;
             }
 
-            .nav-link {
-                font-size: 14px;
-                text-decoration: none;
-                font-weight: 600;
-                color: var(--color-gray-000);
+            .btn-email {
+                position: absolute;
+                right: 12px;
+                padding: 2px 8px;
+                
+
+                i {
+                    margin-right: 5px;
+                }
+            }
+
+            .link {
                 opacity: 0;
                 animation: slideInFromRight 0.8s ease-out forwards;
 
@@ -51,6 +61,14 @@
                         animation-delay: 0.3s * $i;
                     }
                 }
+            }
+
+            .nav-link {
+                font-size: 14px;
+                text-decoration: none;
+                font-weight: 600;
+                color: var(--color-gray-000);
+
 
                 @include xl {
                     font-size: 18px;

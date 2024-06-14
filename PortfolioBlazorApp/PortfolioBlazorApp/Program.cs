@@ -1,4 +1,5 @@
 using PortfolioBlazorApp.Components;
+using PortfolioBlazorApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
+
+builder.Services.AddScoped<ProjectService>();
 
 var app = builder.Build();
 

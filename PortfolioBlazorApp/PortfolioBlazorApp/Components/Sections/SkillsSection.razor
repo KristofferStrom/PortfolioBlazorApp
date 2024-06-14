@@ -7,7 +7,8 @@
 
             <h3>My experience so far...</h3>
             <div class="services">
-                <h4><span>-----------</span> Color mode</h4>
+                <TitleComponent Title="Color mode" CssClass="title"/>
+                
                 <p>Easily switch between dark and light mode for a more comfortable and customizable viewing experience.</p>
                 <ColorModeComponent />
             </div>
@@ -15,9 +16,9 @@
         </div>
 
         <div class="skills-section">
-            <SkillComponent Model="skill1" />
-            <SkillComponent Model="skill2" />
-            <SkillComponent Model="skill3" />
+            <SkillComponent Model="frontend" />
+            <SkillComponent Model="backend" />
+            <SkillComponent Model="other" />
         </div>
     </div>
 </section>
@@ -26,21 +27,21 @@
 
 
 @code {
-    private SkillModel skill1 = new SkillModel
+    private SkillModel frontend = new SkillModel
         {
             ImageSrc = "fa-solid fa-code",
             Title = "Frontend",
             Description = "I have experience with React and Blazor, the framework I used to build this website. In addition to these frameworks, I have skills in HTML, CSS (including Tailwind and Sass), as well as jQuery and vanilla JavaScript."
         };
 
-    private SkillModel skill2 = new SkillModel
+    private SkillModel backend = new SkillModel
         {
             ImageSrc = "fa-regular fa-database",
             Title = "Backend",
             Description = "I believe my greatest strengths lie in backend development. I have experience in areas such as web APIs, ASP.NET MVC, SQL databases and microservices."
         };
 
-    private SkillModel skill3 = new SkillModel
+    private SkillModel other = new SkillModel
         {
             ImageSrc = "fa-light fa-rocket",
             Title = "Other",

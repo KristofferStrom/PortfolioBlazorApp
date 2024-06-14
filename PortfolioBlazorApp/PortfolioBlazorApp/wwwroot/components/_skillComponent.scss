@@ -1,12 +1,11 @@
 ﻿.skill {
-    background-color: var(--color-gray-800-o);
+    background-color: var(--color-gray-dark-o);
     border-bottom: 2px solid var(--color-theme);
     padding: 25px 20px;
-    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
 
     &:hover {
-        transform: scale(1.01);
-        background-color: var(--color-gray-800);
+        background-color: var(--color-primary);
     }
 
     .logo-section {
@@ -35,7 +34,7 @@
         p {
             font-size: 0.7rem;
             margin: 0;
-            color: var(--color-gray-600);
+            color: var(--color-text-secondary);
         }
     }
 }

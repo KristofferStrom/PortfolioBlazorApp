@@ -2,6 +2,7 @@
 
     label {
         font-size: 0.8rem;
+        font-weight: 400;
     }
 
     .switch {
@@ -38,7 +39,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: var(--color-gray-700);
+        background-color: var(--color-secondary);
         -webkit-transition: 0.4s;
         transition: 0.4s;
 
