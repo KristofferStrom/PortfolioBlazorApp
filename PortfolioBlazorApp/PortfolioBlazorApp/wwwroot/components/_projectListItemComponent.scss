@@ -6,11 +6,16 @@
         align-items: center;
 
         img {
-            width: 440px; // Fast bredd
-            height: 300px; // Fast höjd
+            width: 100%; // Fast bredd
+            height: auto; // Fast höjd
             object-fit: cover;
             object-position: center;
             filter: grayscale(100%) brightness(100%);
+
+            @include xl {
+                width: 440px;
+                height: 300px;
+            }
         }
 
         .overlay {

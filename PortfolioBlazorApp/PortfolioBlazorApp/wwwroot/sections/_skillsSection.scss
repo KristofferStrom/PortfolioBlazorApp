@@ -2,7 +2,12 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 100vh;
+    padding-bottom: 80px;
+    padding-top: 80px;
+
+    @include xl {
+        height: 100vh;
+    }
 
     .container {
         .title-section {
@@ -10,12 +15,18 @@
             justify-content: space-between;
 
             h3 {
-                font-size: 2.5rem;
-                width: 40%;
+                font-size: 2rem;
                 margin-top: 0;
+                width: 60%;
+
+                @include xl {
+                    font-size: 2.5rem;
+                    width: 40%;
+                }
             }
 
             .services {
+                display: none;
                 width: 32%;
 
                 .title {
@@ -26,14 +37,28 @@
                     font-size: 0.7rem;
                     color: var(--color-text-secondary);
                 }
+
+                @include xl {
+                    display: block;
+                }
             }
         }
 
         .skills-section {
             display: grid;
-            grid-template-columns: auto auto auto;
+            grid-template-columns: auto;
             justify-content: center;
-            gap: 10px;
+            gap: 30px;
+
+            @include md {
+                grid-template-columns: auto auto;
+                gap: 20px;
+            }
+
+            @include xl {
+                grid-template-columns: auto auto auto;
+                gap: 10px;
+            }
         }
     }
 }
