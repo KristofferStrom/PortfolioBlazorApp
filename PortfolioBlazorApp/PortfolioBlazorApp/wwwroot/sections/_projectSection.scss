@@ -5,16 +5,20 @@
     background-color: var(--color-gray-medium);
     padding-top: 80px;
     padding-bottom: 40px;
+    position: relative;
 
     .container {
+
         .title {
-            margin-bottom: 30px;
+            position: absolute;
+            top: 70px;
         }
 
         .title-section {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            margin-top: 40px;
 
             .titles {
 
