@@ -4,24 +4,31 @@
     justify-content: center;
     padding-bottom: 80px;
     padding-top: 80px;
+    background-color: var(--color-gray-medium);
 
     @include xl {
         height: 100vh;
     }
 
     .container {
+        .skill-title {
+            margin-bottom: 50px;
+        }
+
         .title-section {
             display: flex;
             justify-content: space-between;
 
             h3 {
-                font-size: 2rem;
+                font-size: 2.2rem;
                 margin-top: 0;
-                width: 60%;
+                width: 100%;
+                text-align: center;
 
                 @include xl {
                     font-size: 2.5rem;
                     width: 40%;
+                    text-align: left;
                 }
             }
 

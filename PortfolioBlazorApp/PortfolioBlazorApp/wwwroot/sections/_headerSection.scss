@@ -1,7 +1,7 @@
 ﻿
 
 .header {
-    background-color: var(--color-primary-o);
+    background-color: var(--color-primary);
     padding: 10px 0;
     position: fixed;
     top: 0;
@@ -35,60 +35,47 @@
             padding-top: 0;
             align-items: center;
             justify-content: center;
-            
+
 
 
             @include xl {
                 gap: 40px;
             }
 
-            .btn-email {
+
+
+
+            .nav-link {
                 display: none;
-                position: absolute;
-                right: 12px;
-                padding: 2px 8px;
-                font-size: 12px;
-
-                @include xl {
-                    font-size: 14px;
-                    display: block;
-                }
-
-
-                i {
-                    margin-right: 5px;
-                }
-            }
-
-            .link {
+                font-size: 16px;
+                text-decoration: none;
+                font-weight: 600;
+                color: var(--color-gray-000);
+                margin-left: 18px;
                 opacity: 0;
                 animation: slideInFromRight 0.8s ease-out forwards;
+                transition: color 0.5s ease-in-out;
 
                 @for $i from 1 through 4 {
                     &:nth-child(#{$i}) {
                         animation-delay: 0.3s * $i;
                     }
                 }
-            }
 
-            .nav-link {
-                font-size: 16px;
-                text-decoration: none;
-                font-weight: 600;
-                color: var(--color-gray-000);
-                margin-left: 18px;
-           
 
 
                 @include xl {
                     font-size: 18px;
+                    display: block;
                 }
 
 
-                &.active {
+                &.active, &:active {
                     color: var(--color-theme);
-                    text-decoration: underline;
+   
                 }
+
+
 
                 &:hover {
                     color: var(--color-theme);

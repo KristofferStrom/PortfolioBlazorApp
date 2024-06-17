@@ -1,0 +1,54 @@
+﻿.custom-components {
+    padding: 40px 0;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+
+        @include xl {
+            flex-direction: row;
+        }
+
+        .title-section {
+            width: 100%;
+            font-size: 0.9rem;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+
+            h4 {
+                margin: 0;
+                padding: 0;
+            }
+
+            @include xl {
+                width: 50%;
+                text-align: left;
+            }
+        }
+
+        .link-section {
+            display: flex;
+            width: 100%;
+            text-align: center;
+
+            @include xl {
+                display: block;
+                text-align: right;
+            }
+
+            a {
+                width: 100%;
+
+
+
+                i {
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+}

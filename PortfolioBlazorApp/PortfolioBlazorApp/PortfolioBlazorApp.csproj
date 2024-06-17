@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <_ContentIncludedByDefault Remove="wwwroot\app.min.css" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="compilerconfig.json" />
   </ItemGroup>
 

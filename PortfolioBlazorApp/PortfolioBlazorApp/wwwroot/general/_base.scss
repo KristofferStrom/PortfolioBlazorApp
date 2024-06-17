@@ -26,8 +26,8 @@ body {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
 
 
     @include md {
@@ -40,10 +40,14 @@ body {
 
     @include xl {
         max-width: 920px;
+        padding-left: 12px;
+        padding-right: 12px;
     }
 
     @include xxl {
         max-width: 920px;
+        padding-left: 12px;
+        padding-right: 12px;
     }
 }
 

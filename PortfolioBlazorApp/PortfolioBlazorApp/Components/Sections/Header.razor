@@ -1,5 +1,6 @@
 ﻿@inject IJSRuntime JSRuntime
 @inject NavigationManager NavigationManager
+@implements IDisposable
 
 <header class="header" @ref="headerRef">
     <div class="container">
@@ -8,11 +9,9 @@
         </div>
 
         <nav class="nav-menu">
-            <NavLink class="@(_currentUrl == "skills" ? "active nav-link link" : "nav-link link")" @onclick='() => HandleClick("skills")' href="#skills">Skills</NavLink>
-            <NavLink class="@(_currentUrl == "projects" ? "active nav-link link" : "nav-link link")" @onclick='() => HandleClick("projects")' href="#projects">Projects</NavLink>
-            <a href="mailto:kristoffer.strom@hotmail.se" class="btn btn-theme btn-email link"><i class="fa-sharp fa-regular fa-envelope"></i>Email Me</a>
+            <NavLink class="@(_currentUrl == "skills" ? "active nav-link" : "nav-link")" @onclick='() => HandleClick("skills")' href="#skills">Skills</NavLink>
+            <NavLink class="@(_currentUrl == "projects" ? "active nav-link" : "nav-link")" @onclick='() => HandleClick("projects")' href="#projects">Projects</NavLink>
         </nav>
-
     </div>
 </header>
 
@@ -46,28 +45,38 @@
     [JSInvokable]
     public async Task OnScroll(string currentSectionId)
     {
-
         if (currentSectionId != "")
             await JSRuntime.InvokeVoidAsync("blazorHelpers.changeUrl", "#" + currentSectionId);
         else
             await JSRuntime.InvokeVoidAsync("blazorHelpers.changeUrl", "");
-            
+
         await FetchFragment();
-        
     }
 
-
+    public void Dispose()
+    {
+        JSRuntime.InvokeVoidAsync("scrollHandler.stopListeningForScroll");
+    }
 }
 
 <script>
 
     window.scrollHandler = {
-        isUserScrolling: true, // Initialisera flaggan
+        isUserScrolling: true,
+        scrollTimeout: null,
 
         listenForScroll: function (dotnetHelper) {
-            window.addEventListener('scroll', () => {
-                if (!this.isUserScrolling) return; // Kontrollera flaggan innan du fortsätter
+            window.addEventListener('scroll', this.handleScrollEvent.bind(this, dotnetHelper));
+        },
 
+        handleScrollEvent: function (dotnetHelper) {
+            if (!this.isUserScrolling) return;
+
+            if (this.scrollTimeout) {
+                clearTimeout(this.scrollTimeout);
+            }
+
+            this.scrollTimeout = setTimeout(() => {
                 var sections = document.querySelectorAll('section');
                 var currentSectionId = "";
 
@@ -81,7 +90,11 @@
                 });
 
                 dotnetHelper.invokeMethodAsync('OnScroll', currentSectionId);
-            });
+            }, 100);
+        },
+
+        stopListeningForScroll: function () {
+            window.removeEventListener('scroll', this.handleScrollEvent);
         },
 
         disableUserScrolling: function () {
@@ -91,10 +104,9 @@
         enableUserScrolling: function () {
             setTimeout(() => {
                 this.isUserScrolling = true;
-            }, 500); // Justera fördröjningen efter behov
+            }, 10);
         }
     };
-
 
     window.blazorHelpers = {
         changeUrl: (newUrl) => {
@@ -105,10 +117,4 @@
     window.getFragment = () => {
         return window.location.hash.substring(1);
     }
-
-
-  
-
-
-
 </script>

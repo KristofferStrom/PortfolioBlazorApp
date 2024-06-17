@@ -21,10 +21,14 @@
 
                 h3 {
                     font-size: 2rem;
-                    width: 80%;
+                    width: 100%;
+                    text-align: center;
+
 
                     @include xl {
                         width: 60%;
+                        font-size: 2rem;
+                        text-align: left;
                     }
                 }
             }
