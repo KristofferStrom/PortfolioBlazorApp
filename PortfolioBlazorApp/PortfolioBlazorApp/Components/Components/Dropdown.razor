@@ -1,8 +1,8 @@
 ﻿
 <div class="dropdown" @onblur="CloseDropdown" tabindex="0">
-    <div @onclick="ToggleDropdown" class='@(isOpen ? "focus" : "")' style="background-color: @BackgroundColor; border-color: @BorderColor;">@(CurrentValue ?? Title)<i class="fa-solid fa-caret-down"></i> <span style="background-color: @BackgroundColor;">@(CurrentValue == null ? Title : $"You selected {CurrentValue}")</span> </div>
+    <div @onclick="ToggleDropdown" class='@(isOpen ? "focus" : "un-focus")' style="background-color: @BackgroundColor; border-color: @BorderColor;">@(CurrentValue ?? Title)<i class="fa-solid fa-caret-down"></i> <span style="background-color: @BackgroundColor;">@(CurrentValue == null ? Title : $"You selected {CurrentValue}")</span> </div>
 
-    <ul class="dropdown-menu" style="display:@(isOpen ? "block" : "none"); background-color: @BackgroundColor; border-color: @BorderColor;">
+    <ul class="dropdown-menu @(isOpen ? "show" : "")" style="background-color: @BackgroundColor; border-color: @BorderColor;">
         @if (Options == null || !Options.Any())
         {
             <li>No options available</li>

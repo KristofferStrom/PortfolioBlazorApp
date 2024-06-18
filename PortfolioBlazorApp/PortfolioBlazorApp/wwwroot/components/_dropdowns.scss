@@ -14,10 +14,15 @@
         padding: 10px 21px;
         border: 1.5px solid white;
         cursor: pointer;
-        border-radius: 25px;
         font-size: 0.7rem;
         height: 50px;
         align-items: center;
+
+
+        &.focus {
+            border-start-end-radius: 8px;
+            border-start-start-radius: 8px;
+        }
 
 
         span {
@@ -30,19 +35,14 @@
             text-transform: uppercase;
         }
 
-        &.focus {
-            border-radius: 0;
-            border-start-end-radius: 25px;
-            border-start-start-radius: 25px;
-            border-bottom: 0;
-        }
+
+
 
         i {
             padding-left: 10px;
         }
     }
-
-    ul {
+    /*ul {
         display: none;
         position: absolute;
         list-style-type: none;
@@ -79,5 +79,56 @@
 
             
         }
+    }*/
+}
+
+.dropdown-menu {
+    visibility: hidden; // Startar som osynlig
+    position: absolute;
+    list-style-type: none;
+    padding: 0;
+    background-color: var(--color-white);
+    width: 100%;
+    border: 1.5px solid white;
+    border-top: 0;
+    border-end-end-radius: 8px;
+    border-end-start-radius: 8px;
+    z-index: 1;
+    text-align: center;
+    top: 32px;
+    transform: translateY(-1%);
+    transition: transform 0.6s ease-in, max-height 0.6s ease-in; // Behåller endast övergången för transform
+    max-height: 0; // Startar med max-höjd 0 för att dölja innehållet
+    overflow: hidden; // Förhindrar innehåll från att visas utanför max-höjd
+    padding-bottom: 10px;
+
+    li {
+        position: relative;
+        color: var(--color-text);
+        padding: 11px 0;
+        text-decoration: none;
+        display: block;
+        font-size: 0.8rem;
+        text-align: center;
+
+        &:last-child {
+            border-end-end-radius: 20px;
+            border-end-start-radius: 20px;
+        }
+
+        &:hover {
+            cursor: pointer;
+            opacity: 0.5;
+        }
+    }
+
+    &.show {
+        visibility: visible; // Gör synlig
+        transform: translateY(0);
+        max-height: 500px; // Sätt en max-höjd som är tillräckligt stor för att visa allt innehåll
     }
 }
+
+
+
+

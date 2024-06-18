@@ -15,10 +15,15 @@
             <div class="component">
                 <div class="description">
                     <h5>Generic Dropdown</h5>
-                    <p>A button that navigates back to the previous page or a specific fragment.</p>
+                    <p>Due to difficulties styling select elements in Razor code, I have created this generic dropdown component.</p>
                 </div>
                 <div class="content">
-                    <Dropdown Title="Choose a border color" Options='new List<string> {"green", "blue", "white"}' BackgroundColor="var(--color-gray-medium)" BorderColor="@BorderColor" OnValueChanged="ChangeBorderColor" />
+                    <Dropdown Title="Change border color" Options='new List<string> {"green", "blue", "white"}' BackgroundColor="var(--color-gray-medium)" BorderColor="@_borderColor" OnValueChanged="ChangeBorderColor" />
+                     <div class="animal-dropdown">
+                        <Dropdown Title="Change animal icon" Options='new List<string> {"hippo", "cat", "dog"}' BackgroundColor="var(--color-gray-medium)" BorderColor="var(--color-text-primary)" OnValueChanged="ChangeAnimal" />
+                        <i class="fa-solid fa-@(_animal) animal-icon"></i>
+                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -29,14 +34,23 @@
     [Parameter]
     public Action CloseModal { get; set; }
 
-    private string BorderColor { get; set; } =  "var(--color-secondary)";
+    private string _borderColor =  "var(--color-secondary)";
+    private string _animal = "hippo";
 
 
     private void ChangeBorderColor(string color)
     {
         if(color == null)
-            BorderColor = "var(--color-secondary)";
+            _borderColor = "var(--color-secondary)";
         else 
-            BorderColor = color;
+            _borderColor = color;
+    }
+
+    private void ChangeAnimal(string animal)
+    {
+        if(animal == null)
+            _animal = "hippo";
+        else 
+            _animal = animal;
     }
 }
