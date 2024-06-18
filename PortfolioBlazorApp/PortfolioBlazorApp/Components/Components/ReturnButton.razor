@@ -1,0 +1,17 @@
+﻿@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
+
+<h3>ReturnButton</h3>
+<button @onclick="GoBack"><i class="fa-solid fa-arrow-left"></i>Go Back</button>
+@code {
+
+    private async Task GoBack()
+    {
+        if(Fragment != null)
+            NavigationManager.NavigateTo($"/#{Fragment}");
+        else
+            NavigationManager.NavigateTo("/");
+    }
+
+    [Parameter] public string? Fragment { get; set; }
+}

@@ -1,27 +1,25 @@
 ﻿:root {
-    --color-primary: #0B0F19;
+    --color-primary: rgb(11, 15, 25);
     --color-primary-o: rgba(11, 15, 25, 0.5);
-    --color-secondary: #E2E5F1;
-    --color-text-primary: #E2E5F1;
-    --color-text-secondary: #808080;
-    --color-gray-medium: #1F2128;
-    --color-gray-dark: #080F17;
+    --color-secondary: rgb(226, 229, 241);
+    --color-text-primary: rgb(226, 229, 241);
+    --color-text-secondary: rgb(128, 128, 128);
+    --color-gray-medium: rgb(31, 33, 40);
+    --color-gray-dark: rgb(8, 15, 23);
     --color-gray-dark-o: rgba(43, 43, 43, 0.5);
-    --color-theme: #FFD700;
+    --color-theme: rgb(255, 215, 0);
     --color-theme-o: rgba(255, 215, 0, 0.8);
 }
 
 :root.light {
-    --color-primary: #E2E5F1;
+    --color-primary: rgb(226, 229, 241);
     --color-primary-o: rgba(255, 255, 255, 0.5);
-    --color-secondary: #0B0F19;
-    --color-text-primary: #0B0F19;
-    --color-text-secondary: #808080;
-    --color-gray-medium: #EFF2F5;
-    --color-gray-dark: #BEBEBE;
+    --color-secondary: rgb(11, 15, 25);
+    --color-text-primary: rgb(11, 15, 25);
+    --color-text-secondary: rgb(128, 128, 128);
+    --color-gray-medium: rgb(239, 242, 245);
+    --color-gray-dark: rgb(190, 190, 190);
     --color-gray-dark-o: rgba(190, 190, 190, 0.2);
-    --color-theme: #CCB100;
+    --color-theme: rgb(204, 177, 0);
     --color-theme-o: rgba(204, 177, 0, 0.8);
 }
-
-$background-color: #0B0F19;

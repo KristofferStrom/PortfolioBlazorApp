@@ -1,15 +1,30 @@
-﻿<section class="custom-components">
+﻿
+<section class="custom-components">
     <div class="container">
         
         <div class="title-section">
             <h4>I have also developed some generic custom components in Blazor that can be reused in various projects.</h4>
         </div>
         <div class="link-section">
-            <a class="btn btn-secondary" href="/custom-components">Check it out<i class="fa-solid fa-arrow-up-right"></i></a>
+            <button class="btn btn-secondary" @onclick="ToggleModal">Check it out<i class="fa-solid fa-arrow-up-right"></i></button>
         </div>
     </div>
 </section>
 
+
+   
+<div class="modal-background @(showModal ? "modal-show" : "")">
+        <CustomComponents CloseModal="ToggleModal"/>
+</div>
+   
+
 @code {
+    private bool showModal = false;
+
+    private void ToggleModal()
+    {
+        showModal = !showModal;
+    }
+   
 
 }

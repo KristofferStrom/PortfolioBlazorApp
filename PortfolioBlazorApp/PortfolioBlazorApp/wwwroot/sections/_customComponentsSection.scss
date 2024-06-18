@@ -46,8 +46,12 @@
                 width: 50%;
             }
 
-            a {
+            button {
                 width: 100%;
+
+                @include xl {
+                    width: auto;
+                }
 
 
 
@@ -57,4 +61,25 @@
             }
         }
     }
+}
+
+.modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0; // Starta som osynlig
+    visibility: hidden; // Inte synlig och inte interaktiv
+    transition: opacity 0.5s, visibility 0.5s; // Mjuk övergång för både opacitet och synlighet
+}
+
+.modal-show {
+    opacity: 1;
+    visibility: visible; // Gör modalen synlig och interaktiv
 }

@@ -20,6 +20,8 @@
     private string _currentSectionId = "";
     private string _currentUrl = "";
 
+
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
@@ -28,6 +30,7 @@
             await JSRuntime.InvokeVoidAsync("scrollHandler.listenForScroll", dotnetHelper);
         }
     }
+
 
     private async Task HandleClick(string sectionId)
     {
@@ -116,5 +119,9 @@
 
     window.getFragment = () => {
         return window.location.hash.substring(1);
+    }
+
+    function getRelativePath() {
+        return window.location.pathname;
     }
 </script>

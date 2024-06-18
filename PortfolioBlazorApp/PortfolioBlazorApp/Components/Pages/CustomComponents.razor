@@ -1,0 +1,42 @@
+﻿  @page "/custom-components"
+
+<div class="custom-components-page">
+    <div class="container">
+        <div class="exit-section">
+            <TitleComponent Title="Custom Components" />
+            <button class="btn btn-secondary" @onclick="CloseModal"><i class="fa-regular fa-xmark-large"></i></button>
+        </div>
+
+        <div class="title-section">
+            <h4>Some of my custom Blazor components.</h4>
+        </div>
+
+        <div class="components-section">
+            <div class="component">
+                <div class="description">
+                    <h5>Generic Dropdown</h5>
+                    <p>A button that navigates back to the previous page or a specific fragment.</p>
+                </div>
+                <div class="content">
+                    <Dropdown Title="Choose a border color" Options='new List<string> {"green", "blue", "white"}' BackgroundColor="var(--color-gray-medium)" BorderColor="@BorderColor" OnValueChanged="ChangeBorderColor" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public Action CloseModal { get; set; }
+
+    private string BorderColor { get; set; } =  "var(--color-secondary)";
+
+
+    private void ChangeBorderColor(string color)
+    {
+        if(color == null)
+            BorderColor = "var(--color-secondary)";
+        else 
+            BorderColor = color;
+    }
+}
