@@ -1,4 +1,5 @@
-﻿@import url("https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap");
+﻿@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap");
 :root {
   --color-primary: rgb(11, 15, 25);
   --color-primary-o: rgba(11, 15, 25, 0.5);
@@ -395,6 +396,232 @@ html {
   max-height: 500px;
 }
 
+.table-container {
+  padding: 20px 25px;
+}
+.table-container .table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+}
+.table-container .table .table-head {
+  border-bottom: 2px solid var(--color-theme-muted);
+}
+.table-container .table .table-head tr {
+  display: flex;
+  align-items: center;
+}
+.table-container .table .table-head tr th {
+  position: relative;
+  padding: 8px 10px;
+  text-align: left;
+  color: var(--color-text-primary);
+  font-weight: 600;
+  cursor: pointer;
+}
+.table-container .table .table-head tr th i {
+  position: absolute;
+  bottom: 12px;
+  margin-left: 5px;
+}
+.table-container .table .table-head, .table-container .table .table-body {
+  display: flex;
+  flex-direction: column;
+}
+.table-container .table .table-head tr, .table-container .table .table-body tr {
+  display: flex;
+  align-items: center;
+}
+.table-container .table .table-head tr th, .table-container .table .table-head tr td, .table-container .table .table-body tr th, .table-container .table .table-body tr td {
+  flex: none;
+  text-align: left;
+  white-space: nowrap;
+  min-height: 15.5px;
+  display: flex;
+  font-size: 0.8rem;
+  justify-content: space-between;
+}
+.table-container .table .table-head tr th, .table-container .table .table-body tr th {
+  align-items: flex-end;
+}
+.table-container .table .table-head tr td, .table-container .table .table-body tr td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  align-items: center;
+  color: var(--color-text-secondary);
+}
+.table-container .table .table-body .table-row:hover {
+  background-color: var(--color-theme);
+}
+.table-container .table .table-body .table-row:last-child .row-col, .table-container .table .table-body .table-row:last-child .btn-container {
+  border-bottom: none;
+}
+.table-container .table .table-body .table-row .row-col {
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-theme-muted);
+}
+.table-container .table .table-body .table-row .row-col .table-image {
+  height: 40px;
+  width: auto;
+}
+.table-container .table .table-body .table-row .btn-container {
+  padding: 8px;
+  text-align: right;
+  border-bottom: 1px solid var(--color-theme-muted);
+  align-items: center;
+}
+.table-container .table .table-body .table-row .btn-container button {
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  font-size: 0.8rem;
+  padding: 0.45rem;
+  height: fit-content;
+  width: fit-content;
+  border-radius: 0.5rem;
+  border: none;
+  margin-right: 8px;
+}
+.table-container .table .table-body .table-row .btn-container button.info:hover {
+  background-color: rgb(238, 242, 165);
+  cursor: pointer;
+  box-shadow: 0 0 10px var(--color-secondary-text);
+}
+.table-container .table .table-body .table-row .btn-container button.danger:hover {
+  background-color: var(--color-danger-bg);
+  cursor: pointer;
+  box-shadow: 0 0 10px var(--color-secondary-text);
+}
+.table-container .table .no-items {
+  text-align: center;
+  padding: 20px 0;
+  color: gray;
+  font-style: italic;
+}
+
+.custom-component {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+.custom-component .component-demo, .custom-component .component-how-to-use, .custom-component .images {
+  opacity: 0;
+  transform: translateY(100%);
+  animation: slideInFromBottom 1.2s ease-out forwards;
+}
+.custom-component .arrows, .custom-component .line-down {
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+}
+.custom-component .line-down {
+  animation-delay: 4s;
+}
+.custom-component .component-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  animation-delay: 0.5s;
+}
+@media (min-width: 1200px) {
+  .custom-component .component-demo {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+.custom-component .component-demo .description {
+  width: 100%;
+  text-align: center;
+}
+@media (min-width: 1200px) {
+  .custom-component .component-demo .description {
+    width: 40%;
+    text-align: left;
+  }
+}
+.custom-component .component-demo .description h5 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  margin-top: 0;
+}
+.custom-component .component-demo .description p {
+  font-size: 0.7rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+  padding: 0;
+}
+.custom-component .component-how-to-use {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation-delay: 1.5s;
+}
+.custom-component .component-how-to-use h5 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  margin-top: 0;
+  max-width: 120px;
+}
+.custom-component .component-how-to-use p {
+  font-size: 0.7rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 0;
+  max-width: 115px;
+}
+.custom-component .component-how-to-use p span {
+  color: var(--color-text-primary);
+}
+.custom-component .arrows {
+  margin-top: -50px;
+  display: flex;
+  gap: 200px;
+  animation-delay: 4s;
+}
+.custom-component .images {
+  display: flex;
+  justify-content: space-between;
+  animation-delay: 2.5s;
+}
+.custom-component .images img {
+  width: 40%;
+  padding: 20px;
+}
+
+.box {
+  border: 1px solid var(--color-theme);
+  padding: 40px;
+  border-radius: 8px;
+}
+
+/*
+.hide {
+    visibility: hidden;
+}*/
+@keyframes slideInFromBottom {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .header {
   background-color: var(--color-primary);
   padding: 10px 0;
@@ -847,182 +1074,99 @@ footer .container a, footer .container p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 45px;
+  position: relative;
+  padding-top: 150px;
 }
-@media (min-width: 1200px) {
-  .custom-components .container {
-    flex-direction: row;
-    gap: 30px;
-  }
+.custom-components .container .title {
+  position: absolute;
+  top: 20px;
+  left: 18px;
 }
 .custom-components .container .title-section {
-  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  justify-content: space-between;
   font-size: 0.9rem;
-  text-align: center;
   margin: 0;
   padding: 0;
 }
 .custom-components .container .title-section h4 {
+  font-size: 1rem;
   margin: 0;
   padding: 0;
+  width: 60%;
 }
-@media (min-width: 1200px) {
-  .custom-components .container .title-section {
-    width: 50%;
-    text-align: left;
-  }
-}
-.custom-components .container .link-section {
+.custom-components .container .select-component-section {
   display: flex;
   width: 100%;
   text-align: center;
 }
 @media (min-width: 1200px) {
-  .custom-components .container .link-section {
+  .custom-components .container .select-component-section {
     display: block;
     text-align: right;
     width: 50%;
   }
 }
-.custom-components .container .link-section button {
-  width: 100%;
+.custom-components .container .components-section .div-custom-component {
+  padding-top: 50px;
 }
-@media (min-width: 1200px) {
-  .custom-components .container .link-section button {
-    width: auto;
-  }
-}
-.custom-components .container .link-section button i {
-  margin-left: 5px;
-}
-
-.modal-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+.custom-components .container .components-section .div-custom-component .dropdown-component, .custom-components .container .components-section .div-custom-component .table-component {
   opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.5s, visibility 0.5s;
+  animation: fadeIn 3s ease-out forwards;
 }
-
-.modal-show {
-  opacity: 1;
-  visibility: visible;
-}
-
-.custom-components-page {
-  background-color: var(--color-gray-medium);
-  border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  height: 100vh;
-}
-@media (min-width: 1200px) {
-  .custom-components-page {
-    width: auto;
-  }
-}
-.custom-components-page .container {
-  padding: 40px;
+.custom-components .container .components-section .div-custom-component .dropdown-component {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
+  animation-delay: 1.5s;
 }
-.custom-components-page .container .exit-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-}
-.custom-components-page .container .exit-section button {
-  font-size: 0.8rem;
-  padding: 6px 8px;
-}
-.custom-components-page .container .title-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-@media (min-width: 1200px) {
-  .custom-components-page .container .title-section {
-    align-items: start;
-  }
-}
-.custom-components-page .container .title-section h4 {
-  text-align: center;
-  font-size: 1.5rem;
-}
-@media (min-width: 1200px) {
-  .custom-components-page .container .title-section h4 {
-    text-align: left;
-  }
-}
-.custom-components-page .container .components-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.custom-components-page .container .components-section .component {
-  border: 1px solid var(--color-theme);
-  display: flex;
-  flex-direction: column;
-  padding: 40px;
-  align-items: center;
-  gap: 30px;
-}
-@media (min-width: 1200px) {
-  .custom-components-page .container .components-section .component {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-}
-.custom-components-page .container .components-section .component .description {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
-@media (min-width: 1200px) {
-  .custom-components-page .container .components-section .component .description {
-    width: 40%;
-    text-align: left;
-  }
-}
-.custom-components-page .container .components-section .component .description h5 {
-  font-size: 1.1rem;
-  margin-bottom: 5px;
-  margin-top: 0;
-}
-.custom-components-page .container .components-section .component .description p {
-  font-size: 0.7rem;
-  color: var(--color-text-secondary);
-  margin: 0;
-  padding: 0;
-}
-.custom-components-page .container .components-section .component .content {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-@media (min-width: 1200px) {
-  .custom-components-page .container .components-section .component .content {
-    width: 40%;
-  }
-}
-.custom-components-page .container .components-section .component .content .animal-dropdown {
+.custom-components .container .components-section .div-custom-component .dropdown-component .animal-dropdown {
   display: flex;
   align-items: center;
 }
-.custom-components-page .container .components-section .component .content .animal-dropdown .animal-icon {
+.custom-components .container .components-section .div-custom-component .dropdown-component .animal-dropdown .animal-icon {
   margin-left: 8px;
   padding: 11.5px;
   border: 1.5px solid var(--color-text-primary);
   font-size: 1.5rem;
 }
+.custom-components .container .components-section .div-custom-component .table-component {
+  width: 350px;
+  animation-delay: 1.5s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/*.modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow-y: auto; // Tillåter skrollning inom modalen
+
+    opacity: 0; // Starta som osynlig
+    visibility: hidden; // Inte synlig och inte interaktiv
+    transition: opacity 0.5s, visibility 0.5s; // Mjuk övergång för både opacitet och synlighet
+}
+
+.modal-show {
+    opacity: 1;
+    visibility: visible; // Gör modalen synlig och interaktiv
+}
+
+.modal-open {
+    overflow: hidden;
+}*/

@@ -9,6 +9,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 
 builder.Services.AddScoped<ProjectService>();
+builder.Services.AddScoped<PlayerService>();
 
 var app = builder.Build();
 

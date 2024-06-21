@@ -1,30 +1,111 @@
-﻿
-<section class="custom-components">
+﻿@inject IJSRuntime JSRuntime
+<section id="custom-components" class="custom-components">
     <div class="container">
         
+        <TitleComponent Title="Custom components" CssClass="title"/>
         <div class="title-section">
             <h4>I have also developed some generic custom components in Blazor that can be reused in various projects.</h4>
+            <Dropdown Title="Select a Component" Options='["Dropdown", "Table"]' OnValueChanged="DisplayComponent" BorderColor="var(--color-text-primary)" BackgroundColor="var(--color-primary)" />
         </div>
-        <div class="link-section">
+   
+     @*    <div class="link-section">
             <button class="btn btn-secondary" @onclick="ToggleModal">Check it out<i class="fa-solid fa-arrow-up-right"></i></button>
+        </div> *@
+
+        <div class="components-section">
+
+            <CustomComponent ImgUrl_1="images/dropdown-code.png" ImgUrl_2="images/dropdown-code-2.png" CssClass="div-custom-component" Style="@(_componentToDisplay == "Dropdown" ? "" : "display:none")" Title="Custom Dropdown" Description="Due to difficulties styling select elements in Razor code, I have created this generic dropdown component.">
+                <div class="dropdown-component">
+                    <Dropdown Title="Change animal icon" Options='["hippo", "cat", "dog"]' BackgroundColor="var(--color-gray-medium)" BorderColor="var(--color-secondary)" OnValueChanged="ChangeAnimal" />
+                    <div class="animal-dropdown">
+                        <Dropdown Title="Change animal color" Options='["green", "blue", "white"]' BackgroundColor="var(--color-gray-medium)" BorderColor="var(--color-secondary)" OnValueChanged="ChangeColor" />
+
+                        <i class="fa-solid fa-@(_animal) animal-icon" style="color:@(_animalColor)"></i>
+                    </div>
+                </div>
+            </CustomComponent>
+            <CustomComponent ImgUrl_1="images/table-code.png" ImgUrl_2="images/table-code-2.png" CssClass="div-custom-component" Style="@(_componentToDisplay == "Table" ? "" : "display:none")" Title="Custom Table" Description="Due to difficulties styling select elements in Razor code, I have created this generic dropdown component.">
+                <div class="table-component">
+                    <Table Model="TableModel" ColumnWidths='["30%", "30%", "40%"]' />
+                </div>
+            </CustomComponent>
+
         </div>
     </div>
 </section>
 
 
    
-<div class="modal-background @(showModal ? "modal-show" : "")">
+@* <div class="modal-background @(showModal ? "modal-show" : "")">
         <CustomComponents CloseModal="ToggleModal"/>
-</div>
+</div> *@
    
 
 @code {
     private bool showModal = false;
+   
 
-    private void ToggleModal()
+
+    private string _componentToDisplay = "Dropdown";
+
+    private string _animalColor = "var(--color-secondary)";
+    private string _animal = "hippo";
+
+
+    public TableModel<HandballPlayerModel> TableModel { get; set; } = new();
+    protected override void OnInitialized()
+    {
+        TableModel.Items = PlayerService.GetPlayers();
+        TableModel.Columns = new Dictionary<string, string>
+        {
+            { "FirstName", "Firstname" },
+            { "LastName", "Lastname" },
+            { "Position", "Position" }
+        };
+    }
+
+
+
+    private async Task ToggleModal()
     {
         showModal = !showModal;
+        await JSRuntime.InvokeVoidAsync("toggleBodyScroll", showModal);
+    }
+
+    private void DisplayComponent(string component)
+    {
+        if (component == null)
+            _componentToDisplay = "Dropdown";
+        else
+            _componentToDisplay = component;
+    }
+
+    private void ChangeColor(string color)
+    {
+        if (color == null)
+            _animalColor = "var(--color-secondary)";
+        else
+            _animalColor = color;
+    }
+
+    private void ChangeAnimal(string animal)
+    {
+        if (animal == null)
+            _animal = "hippo";
+        else
+            _animal = animal;
     }
    
 
 }
+
+
+<script>
+    window.toggleBodyScroll = (isModalOpen) => {
+        if (isModalOpen) {
+            document.body.classList.add("modal-open");
+        } else {
+            document.body.classList.remove("modal-open");
+        }
+    }
+</script>

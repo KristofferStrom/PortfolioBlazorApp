@@ -9,41 +9,64 @@
 
         <div class="title-section">
             <h4>Some of my custom Blazor components.</h4>
+            <Dropdown Title="Select a Component" OnValueChanged="ChangeComponent" Options='["Dropdown", "Table"]' BackgroundColor="var(--color-gray-medium)" BorderColor="var(--color-theme)" />
         </div>
 
+
         <div class="components-section">
-            <div class="component">
-                <div class="description">
-                    <h5>Generic Dropdown</h5>
-                    <p>Due to difficulties styling select elements in Razor code, I have created this generic dropdown component.</p>
+
+            <CustomComponent Style="@(_componentToDisplay == "Dropdown" ? "" : "display:none")" Title="Custom Dropdown" Description="Due to difficulties styling select elements in Razor code, I have created this generic dropdown component.">
+                <div class="dropdown-component">
+                    <Dropdown Title="Change animal icon" Options='["hippo", "cat", "dog"]' BackgroundColor="var(--color-gray-medium)" BorderColor="var(--color-secondary)" OnValueChanged="ChangeAnimal" />
+                    <div class="animal-dropdown">
+                        <Dropdown Title="Change animal color" Options='["green", "blue", "white"]' BackgroundColor="var(--color-gray-medium)" BorderColor="var(--color-secondary)" OnValueChanged="ChangeColor" />
+
+                        <i class="fa-solid fa-@(_animal) animal-icon" style="color:@(_animalColor)"></i>
+                    </div>
                 </div>
-                <div class="content">
-                    <Dropdown Title="Change border color" Options='new List<string> {"green", "blue", "white"}' BackgroundColor="var(--color-gray-medium)" BorderColor="@_borderColor" OnValueChanged="ChangeBorderColor" />
-                     <div class="animal-dropdown">
-                        <Dropdown Title="Change animal icon" Options='new List<string> {"hippo", "cat", "dog"}' BackgroundColor="var(--color-gray-medium)" BorderColor="var(--color-text-primary)" OnValueChanged="ChangeAnimal" />
-                        <i class="fa-solid fa-@(_animal) animal-icon"></i>
-                     </div>
-                    
-                </div>
-            </div>
+            </CustomComponent>
+            <CustomComponent Style="@(_componentToDisplay == "Table" ? "" : "display:none")" Title="Custom Table" Description="Due to difficulties styling select elements in Razor code, I have created this generic dropdown component.">
+                <Table Model="TableModel" ColumnWidths='["30%", "30%", "40%"]' />
+            </CustomComponent>
+
         </div>
     </div>
 </div>
 
 @code {
     [Parameter]
-    public Action CloseModal { get; set; }
+    public Func<Task> CloseModal { get; set; } = null!;
 
-    private string _borderColor =  "var(--color-secondary)";
+    public TableModel<HandballPlayerModel> TableModel { get; set; } = new();
+    private string _componentToDisplay = "Dropdown";
+
+    private string _animalColor =  "var(--color-secondary)";
     private string _animal = "hippo";
 
+    protected override void OnInitialized()
+    {
+        TableModel.Items = PlayerService.GetPlayers();
+        TableModel.Columns = new Dictionary<string, string>
+        {
+            { "FirstName", "Firstname" },
+            { "LastName", "Lastname" },
+            { "Position", "Position" }
+        };
+    }
 
-    private void ChangeBorderColor(string color)
+
+    private void ChangeComponent(string component)
+    {
+        _componentToDisplay = component;
+    }
+
+
+    private void ChangeColor(string color)
     {
         if(color == null)
-            _borderColor = "var(--color-secondary)";
+            _animalColor = "var(--color-secondary)";
         else 
-            _borderColor = color;
+            _animalColor = color;
     }
 
     private void ChangeAnimal(string animal)
@@ -54,3 +77,4 @@
             _animal = animal;
     }
 }
+

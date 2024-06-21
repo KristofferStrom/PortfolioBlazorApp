@@ -1,0 +1,61 @@
+﻿<div class="custom-component @CssClass" style="@Style">
+    <div class="component-demo box">
+        <div class="description">
+            <h5>@Title</h5>
+            <p>@Description</p>
+        </div>
+        <div class="component-demo">
+            @ChildContent
+        </div>
+    </div>
+    <svg class="line-down" width="100" height="80" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 50,0 C 20,50 80,50 50,200" stroke="var(--color-secondary)" fill="transparent" />
+    </svg>
+    <div class="component-how-to-use box">
+        <div class="desription">
+            <h5>How to use it</h5>
+            <p>
+                <span>Left:</span> Here I use the component and insert the values I want to use.
+            </p>
+            <p>
+                <span>Right:</span> Here I receive the user-selected value as a parameter.
+            </p>
+        </div>
+    </div>
+    <div class="arrows">
+        <svg width="200" height="100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 190,10 C 130,30 70,170 10,190" stroke="white" fill="transparent" />
+        </svg>
+        <svg width="200" height="100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 10,10 C 70,30 130,170 190,190" stroke="white" fill="transparent" />
+        </svg>
+    </div>
+    <div class="images">
+        <img class="box" src="@ImgUrl_1" alt="code" />
+        <img class="box" src="@ImgUrl_2" alt="code" />
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string Title { get; set; } = null!;
+
+    [Parameter]
+    public string Description { get; set; } = null!;
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } = null!;
+
+    [Parameter]
+    public string? Style { get; set; }
+
+    [Parameter]
+    public string? CssClass { get; set; }
+
+    [Parameter]
+    public string ImgUrl_1 { get; set; } = null!;
+
+    [Parameter]
+    public string ImgUrl_2 { get; set; } = null!;
+
+}

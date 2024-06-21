@@ -10,6 +10,8 @@
 
         <nav class="nav-menu">
             <NavLink class="@(_currentUrl == "skills" ? "active nav-link" : "nav-link")" @onclick='() => HandleClick("skills")' href="#skills">Skills</NavLink>
+            <NavLink class="@(_currentUrl == "custom-components" ? "active nav-link" : "nav-link")" @onclick='() => HandleClick("custom-components")' href="#custom-components">Blazor components</NavLink>
+
             <NavLink class="@(_currentUrl == "projects" ? "active nav-link" : "nav-link")" @onclick='() => HandleClick("projects")' href="#projects">Projects</NavLink>
         </nav>
     </div>

@@ -1,0 +1,131 @@
+﻿@typeparam TItem
+@inject Microsoft.AspNetCore.Authorization.IAuthorizationService AuthorizationService
+
+<div class="table-container">
+    <table class="table">
+        <thead class="table-head">
+            <tr>
+                @for (var i = 0; i < Model.Columns.Count; i++)
+                {
+                    var column = Model.Columns.ElementAt(i);
+                    var width = ColumnWidths != null && ColumnWidths.Count > i ? ColumnWidths[i] : null;
+                    <th style="width: @width" @onclick="() => Sort(column.Key)">
+                        <span class="header-content">
+                            @column.Value
+                            @if (currentSortColumn == column.Key)
+                            {
+                                <i class="fas @(currentSortOrder == SortOrder.Ascending ? "fa-sort-up" : "fa-sort-down")"></i>
+                            }
+                        </span>
+                    </th>
+                }
+                @if (EditAction != null || DeleteAction != null)
+                {
+                    <th></th>
+                }
+            </tr>
+        </thead>
+        <tbody class="table-body">
+            @if (Model.Items != null && Model.Items.Any())
+            {
+                foreach (var item in sortedItems)
+                {
+                    <tr class="table-row">
+                        @for (var i = 0; i < Model.Columns.Count; i++)
+                        {
+                            var column = Model.Columns.ElementAt(i);
+                            var value = item!.GetType().GetProperty(column.Key)!.GetValue(item);
+                            var width = ColumnWidths != null && ColumnWidths.Count > i ? ColumnWidths[i] : null;
+                            if (value != null && Uri.TryCreate(value.ToString(), UriKind.Absolute, out var uriResult)
+                            && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps))
+                            {
+                                <td class="row-col" style="width: @width"><img src="@value" alt="Image" class="table-image" /></td>
+                            }
+                            else
+                            {
+                                <td class="row-col" style="width: @width">@value</td>
+                            }
+                        }
+                        @if (EditAction != null || DeleteAction != null)
+                        {
+                            var buttonWidth = ColumnWidths != null && ColumnWidths.Count > Model.Columns.Count ? ColumnWidths[Model.Columns.Count] : null;
+                            <td class="btn-container">
+                                <div style="width: @buttonWidth">
+
+                                    @if (EditAction != null)
+                                    {
+                                        <button class="info" @onclick="() => EditAction(item)" title="Edit"><i class="fa-regular fa-pen"></i></button>
+                                    }
+                                    @if (DeleteAction != null)
+                                    {
+                                        <button class="danger" @onclick="() => DeleteAction(item)" title="Delete"><i class="fa-regular fa-trash"></i></button>
+                                    }
+                                    
+                                </div>
+                            </td>
+                        }
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="@(Model.Columns.Count + (EditAction != null || DeleteAction != null ? 1 : 0))" class="no-items">No items to display</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@code {
+    [Parameter]
+    public TableModel<TItem> Model { get; set; } = null!;
+
+    [Parameter]
+    public Action<TItem>? EditAction { get; set; }
+
+    [Parameter]
+    public Action<TItem>? DeleteAction { get; set; }
+
+    // [Parameter]
+    // public bool ModifyPermission { get; set; } = true;
+
+    // [Parameter]
+    // public bool DeletePermission { get; set; } = true;
+
+    [Parameter]
+    public List<string>? ColumnWidths { get; set; }
+
+    private enum SortOrder { Ascending, Descending }
+    private SortOrder currentSortOrder = SortOrder.Ascending;
+    private string currentSortColumn = "";
+    private IEnumerable<TItem> sortedItems => SortItems();
+
+    private void Sort(string columnName)
+    {
+        if (currentSortColumn == columnName)
+        {
+            currentSortOrder = currentSortOrder == SortOrder.Ascending ? SortOrder.Descending : SortOrder.Ascending;
+        }
+        else
+        {
+            currentSortColumn = columnName;
+            currentSortOrder = SortOrder.Ascending;
+        }
+    }
+
+    private IEnumerable<TItem> SortItems()
+    {
+        var property = typeof(TItem).GetProperty(currentSortColumn);
+        if (property == null)
+        {
+            return Model.Items;
+        }
+
+        var sorted = currentSortOrder == SortOrder.Ascending
+            ? Model.Items.OrderBy(item => property.GetValue(item))
+            : Model.Items.OrderByDescending(item => property.GetValue(item));
+
+        return sorted;
+    }
+}
