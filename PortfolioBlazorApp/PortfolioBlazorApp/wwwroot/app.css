@@ -364,7 +364,7 @@ html {
   border-top: 0;
   border-end-end-radius: 8px;
   border-end-start-radius: 8px;
-  z-index: 1;
+  z-index: 100;
   text-align: center;
   top: 32px;
   transform: translateY(-1%);
@@ -515,12 +515,25 @@ html {
   transform: translateY(100%);
   animation: slideInFromBottom 1.2s ease-out forwards;
 }
-.custom-component .arrows, .custom-component .line-down {
+.custom-component .arrows, .custom-component .line-down, .custom-component .line-down-mobile {
   opacity: 0;
   animation: fadeIn 1s ease-out forwards;
 }
 .custom-component .line-down {
+  z-index: -1;
   animation-delay: 4s;
+}
+.custom-component .line-down-mobile {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  z-index: -1;
+  animation-delay: 4s;
+}
+@media (min-width: 1200px) {
+  .custom-component .line-down-mobile {
+    display: none;
+  }
 }
 .custom-component .component-demo {
   display: flex;
@@ -528,11 +541,18 @@ html {
   gap: 20px;
   align-items: center;
   animation-delay: 0.5s;
+  border: 1px solid var(--color-theme);
+  padding: 40px;
+  border-radius: 8px;
+  padding: 40px 10px;
 }
 @media (min-width: 1200px) {
   .custom-component .component-demo {
     flex-direction: row;
     justify-content: space-between;
+    border: 1px solid var(--color-theme);
+    padding: 40px;
+    border-radius: 8px;
   }
 }
 .custom-component .component-demo .description {
@@ -554,7 +574,7 @@ html {
   font-size: 0.7rem;
   color: var(--color-text-secondary);
   margin: 0;
-  padding: 0;
+  padding: 0 21px;
 }
 .custom-component .component-how-to-use {
   padding: 30px;
@@ -562,48 +582,83 @@ html {
   flex-direction: column;
   align-items: center;
   animation-delay: 1.5s;
+  border: 1px solid var(--color-theme);
+  padding: 40px;
+  border-radius: 8px;
 }
 .custom-component .component-how-to-use h5 {
   font-size: 1.1rem;
   margin-bottom: 5px;
   margin-top: 0;
-  max-width: 120px;
+  text-align: center;
 }
 .custom-component .component-how-to-use p {
   font-size: 0.7rem;
   color: var(--color-text-secondary);
   margin-bottom: 0;
-  max-width: 115px;
+  text-align: center;
 }
 .custom-component .component-how-to-use p span {
   color: var(--color-text-primary);
 }
+@media (min-width: 1200px) {
+  .custom-component .component-how-to-use h5 {
+    max-width: 120px;
+    text-align: left;
+  }
+  .custom-component .component-how-to-use p {
+    max-width: 115px;
+    text-align: left;
+  }
+}
 .custom-component .arrows {
+  display: none;
   margin-top: -50px;
-  display: flex;
   gap: 200px;
   animation-delay: 4s;
 }
+@media (min-width: 1200px) {
+  .custom-component .arrows {
+    display: flex;
+  }
+}
 .custom-component .images {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   animation-delay: 2.5s;
+  gap: 20px;
 }
-.custom-component .images img {
-  width: 40%;
-  padding: 20px;
+@media (min-width: 1200px) {
+  .custom-component .images {
+    flex-direction: row;
+    gap: 80px;
+  }
 }
-
-.box {
+.custom-component .images .img {
+  position: relative;
+  width: 350px;
   border: 1px solid var(--color-theme);
   padding: 40px;
   border-radius: 8px;
+  padding: 17px;
+}
+.custom-component .images .img img {
+  width: 100%;
+}
+@media (min-width: 1200px) {
+  .custom-component .images .img img {
+    padding: 15px;
+  }
+}
+.custom-component .images .img span {
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  font-size: 0.7rem;
 }
 
-/*
-.hide {
-    visibility: hidden;
-}*/
 @keyframes slideInFromBottom {
   from {
     transform: translateY(100%);
@@ -1075,51 +1130,59 @@ footer .container a, footer .container p {
   flex-direction: column;
   align-items: center;
   position: relative;
-  padding-top: 150px;
+  padding-top: 100px;
+}
+@media (min-width: 1200px) {
+  .custom-components .container {
+    padding-top: 150px;
+  }
 }
 .custom-components .container .title {
   position: absolute;
-  top: 20px;
+  top: 15px;
   left: 18px;
+}
+@media (min-width: 1200px) {
+  .custom-components .container .title {
+    top: 20px;
+  }
 }
 .custom-components .container .title-section {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr;
   justify-content: space-between;
   font-size: 0.9rem;
   margin: 0;
   padding: 0;
+  gap: 40px;
+}
+@media (min-width: 1200px) {
+  .custom-components .container .title-section {
+    grid-template-columns: 1fr auto;
+  }
 }
 .custom-components .container .title-section h4 {
   font-size: 1rem;
   margin: 0;
   padding: 0;
-  width: 60%;
-}
-.custom-components .container .select-component-section {
-  display: flex;
   width: 100%;
   text-align: center;
 }
 @media (min-width: 1200px) {
-  .custom-components .container .select-component-section {
-    display: block;
-    text-align: right;
-    width: 50%;
+  .custom-components .container .title-section h4 {
+    width: 60%;
+    text-align: left;
   }
 }
 .custom-components .container .components-section .div-custom-component {
   padding-top: 50px;
-}
-.custom-components .container .components-section .div-custom-component .dropdown-component, .custom-components .container .components-section .div-custom-component .table-component {
-  opacity: 0;
-  animation: fadeIn 3s ease-out forwards;
+  display: flex;
+  justify-content: center;
 }
 .custom-components .container .components-section .div-custom-component .dropdown-component {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  animation-delay: 1.5s;
 }
 .custom-components .container .components-section .div-custom-component .dropdown-component .animal-dropdown {
   display: flex;
@@ -1132,8 +1195,24 @@ footer .container a, footer .container p {
   font-size: 1.5rem;
 }
 .custom-components .container .components-section .div-custom-component .table-component {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+.custom-components .container .components-section .div-custom-component .table-component .table_1 {
+  display: flex;
+  justify-content: center;
   width: 350px;
-  animation-delay: 1.5s;
+  padding: 0;
+  margin: 0;
+  padding-left: 40px;
+}
+@media (min-width: 1200px) {
+  .custom-components .container .components-section .div-custom-component .table-component {
+    width: 350px;
+  }
 }
 
 @keyframes fadeIn {

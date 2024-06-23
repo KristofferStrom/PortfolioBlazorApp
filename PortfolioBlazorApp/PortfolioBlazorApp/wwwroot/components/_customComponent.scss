@@ -12,13 +12,26 @@
         animation: slideInFromBottom 1.2s ease-out forwards;
     }
 
-    .arrows, .line-down {
+    .arrows, .line-down, .line-down-mobile {
         opacity: 0; // Sätt initial opacitet till 0
         animation: fadeIn 1s ease-out forwards;
     }
 
     .line-down {
+        z-index: -1;
         animation-delay: 4s;
+    }
+
+    .line-down-mobile {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        z-index: -1;
+        animation-delay: 4s;
+
+        @include xl {
+            display: none;
+        }
     }
 
     .component-demo {
@@ -27,10 +40,13 @@
         gap: 20px;
         align-items: center;
         animation-delay: 0.5s;
+        @include box;
+        padding: 40px 10px;
 
         @include xl {
             flex-direction: row;
             justify-content: space-between;
+            @include box;
         }
 
         .description {
@@ -52,10 +68,9 @@
                 font-size: 0.7rem;
                 color: var(--color-text-secondary);
                 margin: 0;
-                padding: 0;
+                padding: 0 21px;
             }
         }
-
     }
 
     .component-how-to-use {
@@ -65,56 +80,103 @@
         align-items: center;
         animation-delay: 1.5s; // Exempel på fördröjning
 
+        @include box;
+
+
+
 
         h5 {
             font-size: 1.1rem;
             margin-bottom: 5px;
             margin-top: 0;
-            max-width: 120px;
+            text-align: center;
         }
 
         p {
             font-size: 0.7rem;
             color: var(--color-text-secondary);
             margin-bottom: 0;
-            max-width: 115px;
+            text-align: center;
+
 
 
             span {
                 color: var(--color-text-primary);
             }
         }
+
+        @include xl {
+
+
+            h5 {
+                max-width: 120px;
+                text-align: left;
+            }
+
+            p {
+                max-width: 115px;
+                text-align: left;
+            }
+        }
     }
 
     .arrows {
+        display: none;
         margin-top: -50px;
-        display: flex;
         gap: 200px;
         animation-delay: 4s;
+
+        @include xl {
+            display: flex;
+        }
     }
 
     .images {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         animation-delay: 2.5s;
+        gap: 20px;
 
-        img {
-            width: 40%;
-            padding: 20px;
+        .line-down-mobile {
+        }
+
+
+        @include xl {
+            flex-direction: row;
+            gap: 80px;
+        }
+
+
+        .img {
+            position: relative;
+            width: 350px;
+            @include box;
+            padding: 17px;
+
+
+            img {
+                width: 100%;
+
+                @include xl {
+                    padding: 15px;
+                }
+            }
+
+            span {
+                position: absolute;
+                left: 10px;
+                top: 5px;
+                font-size: 0.7rem;
+            }
         }
     }
 }
 
 
-.box {
-    border: 1px solid var(--color-theme);
-    padding: 40px;
-    border-radius: 8px;
-}
-/*
-.hide {
-    visibility: hidden;
-}*/
+
+
 @keyframes slideInFromBottom {
     from {
         transform: translateY(100%);

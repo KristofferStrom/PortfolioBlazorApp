@@ -1,17 +1,17 @@
 ﻿<div class="custom-component @CssClass" style="@Style">
-    <div class="component-demo box">
+    <div class="component-demo">
         <div class="description">
             <h5>@Title</h5>
             <p>@Description</p>
         </div>
-        <div class="component-demo">
+        <div class="">
             @ChildContent
         </div>
     </div>
     <svg class="line-down" width="100" height="80" xmlns="http://www.w3.org/2000/svg">
         <path d="M 50,0 C 20,50 80,50 50,200" stroke="var(--color-secondary)" fill="transparent" />
     </svg>
-    <div class="component-how-to-use box">
+    <div class="component-how-to-use">
         <div class="desription">
             <h5>How to use it</h5>
             <p>
@@ -30,9 +30,25 @@
             <path d="M 10,10 C 70,30 130,170 190,190" stroke="white" fill="transparent" />
         </svg>
     </div>
+    <svg class="line-down-mobile" width="100" height="80" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 50,0 C 20,50 80,50 50,200" stroke="var(--color-secondary)" fill="transparent" />
+    </svg>
     <div class="images">
-        <img class="box" src="@ImgUrl_1" alt="code" />
-        <img class="box" src="@ImgUrl_2" alt="code" />
+        <div class="img">
+            <img src="@ImgUrl_1" alt="code" />
+            <span>1.</span>
+        </div>
+        <svg class="line-down-mobile" width="100" height="80" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 50,0 C 20,50 80,50 50,200" stroke="var(--color-secondary)" fill="transparent" />
+        </svg>
+        <div class="img">
+            <img src="@ImgUrl_2" alt="code" />
+            <span>2.</span>
+        </div>
+        
+        
+        
+      
     </div>
 </div>
 

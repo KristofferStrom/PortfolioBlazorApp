@@ -5,7 +5,7 @@
         <TitleComponent Title="Custom components" CssClass="title"/>
         <div class="title-section">
             <h4>I have also developed some generic custom components in Blazor that can be reused in various projects.</h4>
-            <Dropdown Title="Select a Component" Options='["Dropdown", "Table"]' OnValueChanged="DisplayComponent" BorderColor="var(--color-text-primary)" BackgroundColor="var(--color-primary)" />
+            <Dropdown Title="Select a Component" Options='["Dropdown", "Table"]' OnValueChanged="DisplayComponent" BorderColor="var(--color-theme)" BackgroundColor="var(--color-primary)" />
         </div>
    
      @*    <div class="link-section">
@@ -26,7 +26,7 @@
             </CustomComponent>
             <CustomComponent ImgUrl_1="images/table-code.png" ImgUrl_2="images/table-code-2.png" CssClass="div-custom-component" Style="@(_componentToDisplay == "Table" ? "" : "display:none")" Title="Custom Table" Description="Due to difficulties styling select elements in Razor code, I have created this generic dropdown component.">
                 <div class="table-component">
-                    <Table Model="TableModel" ColumnWidths='["30%", "30%", "40%"]' />
+                    <Table Model="_model" ColumnWidths='["30%", "30%", "30%"]' />
                 </div>
             </CustomComponent>
 
@@ -52,17 +52,21 @@
     private string _animal = "hippo";
 
 
-    public TableModel<HandballPlayerModel> TableModel { get; set; } = new();
+    private TableModel<HandballPlayerModel> _model = new();
     protected override void OnInitialized()
     {
-        TableModel.Items = PlayerService.GetPlayers();
-        TableModel.Columns = new Dictionary<string, string>
+        _model.Items = PlayerService.GetPlayers();
+        _model.Columns = new Dictionary<string, string>
         {
             { "FirstName", "Firstname" },
             { "LastName", "Lastname" },
             { "Position", "Position" }
         };
     }
+
+
+
+    
 
 
 
@@ -95,6 +99,8 @@
         else
             _animal = animal;
     }
+
+    
    
 
 }

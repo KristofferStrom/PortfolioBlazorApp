@@ -2,6 +2,8 @@
     position: relative;
     display: inline-block;
     width: 100%;
+   
+
 
     div {
         position: relative;
@@ -93,7 +95,7 @@
     border-top: 0;
     border-end-end-radius: 8px;
     border-end-start-radius: 8px;
-    z-index: 1;
+    z-index: 100;
     text-align: center;
     top: 32px;
     transform: translateY(-1%);
@@ -110,6 +112,7 @@
         display: block;
         font-size: 0.8rem;
         text-align: center;
+       
 
         &:last-child {
             border-end-end-radius: 20px;
@@ -128,6 +131,8 @@
         max-height: 500px; // Sätt en max-höjd som är tillräckligt stor för att visa allt innehåll
     }
 }
+
+
 
 
 
