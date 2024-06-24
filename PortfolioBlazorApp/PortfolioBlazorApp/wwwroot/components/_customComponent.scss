@@ -69,14 +69,19 @@
                 color: var(--color-text-secondary);
                 margin: 0;
                 padding: 0 21px;
+
+                @include xl {
+                    padding: 0;
+                }
             }
         }
     }
 
     .component-how-to-use {
-        padding: 30px;
+        padding: 20px;
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
         animation-delay: 1.5s; // Exempel på fördröjning
 
@@ -90,6 +95,7 @@
             margin-bottom: 5px;
             margin-top: 0;
             text-align: center;
+            max-width: 130px;
         }
 
         p {
@@ -97,6 +103,7 @@
             color: var(--color-text-secondary);
             margin-bottom: 0;
             text-align: center;
+            max-width: 130px;
 
 
 
@@ -109,12 +116,11 @@
 
 
             h5 {
-                max-width: 120px;
+
                 text-align: left;
             }
 
             p {
-                max-width: 115px;
                 text-align: left;
             }
         }
@@ -123,7 +129,7 @@
     .arrows {
         display: none;
         margin-top: -50px;
-        gap: 200px;
+        gap: 225px;
         animation-delay: 4s;
 
         @include xl {

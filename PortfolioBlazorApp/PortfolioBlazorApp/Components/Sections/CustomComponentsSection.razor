@@ -7,24 +7,38 @@
             <h4>I have also developed some generic custom components in Blazor that can be reused in various projects.</h4>
             <Dropdown Title="Select a Component" Options='["Dropdown", "Table"]' OnValueChanged="DisplayComponent" BorderColor="var(--color-theme)" BackgroundColor="var(--color-primary)" />
         </div>
-   
-     @*    <div class="link-section">
-            <button class="btn btn-secondary" @onclick="ToggleModal">Check it out<i class="fa-solid fa-arrow-up-right"></i></button>
-        </div> *@
+
 
         <div class="components-section">
 
-            <CustomComponent ImgUrl_1="images/dropdown-code.png" ImgUrl_2="images/dropdown-code-2.png" CssClass="div-custom-component" Style="@(_componentToDisplay == "Dropdown" ? "" : "display:none")" Title="Custom Dropdown" Description="Due to difficulties styling select elements in Razor code, I have created this generic dropdown component.">
+            <CustomComponent 
+                ImgUrl_1="images/dropdown-code.png" 
+                ImgDescription_1="Here I use the component and insert the values I want to use." 
+                ImgUrl_2="images/dropdown-code-2.png"
+                ImgDescription_2="Here I receive the user-selected value as a parameter."
+                CssClass="div-custom-component" 
+                Style="@(_componentToDisplay == "Dropdown" ? "" : "display:none")" 
+                Title="Custom Dropdown" 
+                Description="Due to difficulties styling select elements in Razor code, I have created this generic dropdown component."
+            >
                 <div class="dropdown-component">
                     <Dropdown Title="Change animal icon" Options='["hippo", "cat", "dog"]' BackgroundColor="var(--color-gray-medium)" BorderColor="var(--color-secondary)" OnValueChanged="ChangeAnimal" />
                     <div class="animal-dropdown">
                         <Dropdown Title="Change animal color" Options='["green", "blue", "white"]' BackgroundColor="var(--color-gray-medium)" BorderColor="var(--color-secondary)" OnValueChanged="ChangeColor" />
-
                         <i class="fa-solid fa-@(_animal) animal-icon" style="color:@(_animalColor)"></i>
                     </div>
                 </div>
             </CustomComponent>
-            <CustomComponent ImgUrl_1="images/table-code.png" ImgUrl_2="images/table-code-2.png" CssClass="div-custom-component" Style="@(_componentToDisplay == "Table" ? "" : "display:none")" Title="Custom Table" Description="Due to difficulties styling select elements in Razor code, I have created this generic dropdown component.">
+            <CustomComponent 
+                ImgUrl_1="images/table-code.png"
+                ImgDescription_1="Here I use the component and insert the values I want to use."
+                ImgUrl_2="images/table-code-2.png"
+                ImgDescription_2="This code specifies a generic table model as HandballPlayerModel. During initialization, players are loaded into the Items list. Column headers are set in a dictionary, mapping each model property to a header, which allows for flexible naming of the headers."
+                CssClass="div-custom-component" 
+                Style="@(_componentToDisplay == "Table" ? "" : "display:none")" 
+                Title="Custom Table" 
+                Description="Due to difficulties styling select elements in Razor code, I have created this generic dropdown component."
+            >
                 <div class="table-component">
                     <Table Model="_model" ColumnWidths='["30%", "30%", "30%"]' />
                 </div>

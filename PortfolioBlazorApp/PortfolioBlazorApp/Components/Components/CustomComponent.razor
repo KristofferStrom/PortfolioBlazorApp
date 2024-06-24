@@ -15,10 +15,10 @@
         <div class="desription">
             <h5>How to use it</h5>
             <p>
-                <span>Left:</span> Here I use the component and insert the values I want to use.
+                <span>1.</span> @ImgDescription_1
             </p>
             <p>
-                <span>Right:</span> Here I receive the user-selected value as a parameter.
+                <span>2.</span> @ImgDescription_2
             </p>
         </div>
     </div>
@@ -73,5 +73,11 @@
 
     [Parameter]
     public string ImgUrl_2 { get; set; } = null!;
+
+    [Parameter]
+    public string ImgDescription_1 { get; set; } = null!;
+
+    [Parameter]
+    public string ImgDescription_2 { get; set; } = null!;
 
 }
