@@ -22,9 +22,9 @@
                 Description="Due to difficulties styling select elements in Razor code, I have created this generic dropdown component."
             >
                 <div class="dropdown-component">
-                    <Dropdown Title="Change animal icon" Options='["hippo", "cat", "dog"]' BackgroundColor="var(--color-gray-medium)" BorderColor="var(--color-secondary)" OnValueChanged="ChangeAnimal" />
+                    <Dropdown Title="Change animal icon" Options='["hippo", "cat", "dog"]' BackgroundColor="var(--color-primary)" BorderColor="var(--color-secondary)" OnValueChanged="ChangeAnimal" />
                     <div class="animal-dropdown">
-                        <Dropdown Title="Change animal color" Options='["green", "blue", "white"]' BackgroundColor="var(--color-gray-medium)" BorderColor="var(--color-secondary)" OnValueChanged="ChangeColor" />
+                        <Dropdown Title="Change animal color" Options='["green", "blue", "white"]' BackgroundColor="var(--color-primary)" BorderColor="var(--color-secondary)" OnValueChanged="ChangeColor" />
                         <i class="fa-solid fa-@(_animal) animal-icon" style="color:@(_animalColor)"></i>
                     </div>
                 </div>
