@@ -1,129 +1,99 @@
 ﻿@inject IJSRuntime JSRuntime
 @inject NavigationManager NavigationManager
-@implements IDisposable
 
-<header class="header" @ref="headerRef">
+<header class="header">
     <div class="container">
         <div class="logo">
-            <a class="nav-link" @onclick='() => HandleClick("")' href="/">Kristofferström<span>.</span></a>
+            <NavLink class="nav-link" href="/">Kristofferström<span>.</span></NavLink>
         </div>
 
-        <nav class="nav-menu">
-            <NavLink class="@(_currentUrl == "skills" ? "active nav-link" : "nav-link")" @onclick='() => HandleClick("skills")' href="#skills">Skills</NavLink>
-            <NavLink class="@(_currentUrl == "custom-components" ? "active nav-link" : "nav-link")" @onclick='() => HandleClick("custom-components")' href="#custom-components">Blazor components</NavLink>
-
-            <NavLink class="@(_currentUrl == "projects" ? "active nav-link" : "nav-link")" @onclick='() => HandleClick("projects")' href="#projects">Projects</NavLink>
+        <nav class="nav-menu" style="display:@(isHomePage ? "flex" : "none")">
+            <a class="nav-link" @onclick='() => ScrollToSection("skills")'>Skills</a>
+            <a class="nav-link" @onclick='() => ScrollToSection("custom-components")'>Blazor components</a>
+            <a class="nav-link" @onclick='() => ScrollToSection("projects")'>Projects</a>
         </nav>
     </div>
 </header>
+
+<button class="btn btn-secondary to-top" @onclick="ScrollToTop" style="display:@(showBackToTopButton ? "block" : "none");">↑ To the top</button>
+
 
 @code {
     ElementReference headerRef;
     private string _currentSectionId = "";
     private string _currentUrl = "";
 
+    private bool showBackToTopButton = false;
+    private bool isHomePage;
 
-
+    protected override void OnInitialized()
+    {
+        UpdateIsHomePage();
+        NavigationManager.LocationChanged += HandleLocationChanged;
+    }
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            var dotnetHelper = DotNetObjectReference.Create(this);
-            await JSRuntime.InvokeVoidAsync("scrollHandler.listenForScroll", dotnetHelper);
+            await JSRuntime.InvokeVoidAsync("setupScrollListener", DotNetObjectReference.Create(this));
         }
     }
-
-
-    private async Task HandleClick(string sectionId)
+    private void UpdateIsHomePage()
     {
-        await JSRuntime.InvokeVoidAsync("scrollHandler.disableUserScrolling");
-        await FetchFragment();
-        await JSRuntime.InvokeVoidAsync("scrollHandler.enableUserScrolling");
+        isHomePage = NavigationManager.Uri == NavigationManager.BaseUri;
+        StateHasChanged();
     }
 
-    private async Task FetchFragment()
+    private void HandleLocationChanged(object sender, LocationChangedEventArgs e)
     {
-        _currentUrl = await JSRuntime.InvokeAsync<string>("getFragment");
-        StateHasChanged(); // Uppdatera komponenten för att visa det nya värdet
+        UpdateIsHomePage();
+        StateHasChanged(); // Tvinga en omrendering av komponenten
     }
+
 
     [JSInvokable]
-    public async Task OnScroll(string currentSectionId)
+    public void ToggleBackToTopButton(bool show)
     {
-        if (currentSectionId != "")
-            await JSRuntime.InvokeVoidAsync("blazorHelpers.changeUrl", "#" + currentSectionId);
-        else
-            await JSRuntime.InvokeVoidAsync("blazorHelpers.changeUrl", "");
-
-        await FetchFragment();
+        if (showBackToTopButton != show)
+        {
+            showBackToTopButton = show;
+            StateHasChanged();
+        }
     }
 
-    public void Dispose()
+    private void UpdateLinks()
     {
-        JSRuntime.InvokeVoidAsync("scrollHandler.stopListeningForScroll");
+        // StateHasChanged();
     }
+
+    private async Task ScrollToSection(string sectionId)
+    {
+        var uri = new Uri(NavigationManager.Uri);
+        var currentUrl = uri.PathAndQuery;
+        if(currentUrl != "/")
+            NavigationManager.NavigateTo("/");
+        
+        await JSRuntime.InvokeVoidAsync("scrollToSection", sectionId);
+    }
+
+    private void ScrollToTop()
+    {
+        JSRuntime.InvokeVoidAsync("window.scrollTo", 0, 0);
+    }
+
 }
-
 <script>
-
-    window.scrollHandler = {
-        isUserScrolling: true,
-        scrollTimeout: null,
-
-        listenForScroll: function (dotnetHelper) {
-            window.addEventListener('scroll', this.handleScrollEvent.bind(this, dotnetHelper));
-        },
-
-        handleScrollEvent: function (dotnetHelper) {
-            if (!this.isUserScrolling) return;
-
-            if (this.scrollTimeout) {
-                clearTimeout(this.scrollTimeout);
-            }
-
-            this.scrollTimeout = setTimeout(() => {
-                var sections = document.querySelectorAll('section');
-                var currentSectionId = "";
-
-                sections.forEach(function (section) {
-                    var sectionTop = section.offsetTop;
-                    var sectionHeight = section.offsetHeight;
-
-                    if (pageYOffset >= (sectionTop - sectionHeight / 3) && pageYOffset < (sectionTop + sectionHeight - sectionHeight / 3)) {
-                        currentSectionId = section.id;
-                    }
-                });
-
-                dotnetHelper.invokeMethodAsync('OnScroll', currentSectionId);
-            }, 100);
-        },
-
-        stopListeningForScroll: function () {
-            window.removeEventListener('scroll', this.handleScrollEvent);
-        },
-
-        disableUserScrolling: function () {
-            this.isUserScrolling = false;
-        },
-
-        enableUserScrolling: function () {
-            setTimeout(() => {
-                this.isUserScrolling = true;
-            }, 10);
-        }
-    };
-
-    window.blazorHelpers = {
-        changeUrl: (newUrl) => {
-            window.history.pushState({}, '', newUrl);
-        }
-    };
-
-    window.getFragment = () => {
-        return window.location.hash.substring(1);
+    function setupScrollListener(dotNetReference) {
+        window.addEventListener('scroll', () => {
+            let showButton = document.documentElement.scrollTop > 20 || document.body.scrollTop > 20;
+            dotNetReference.invokeMethodAsync('ToggleBackToTopButton', showButton);
+        });
     }
 
-    function getRelativePath() {
-        return window.location.pathname;
+    function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
     }
 </script>

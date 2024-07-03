@@ -1,13 +1,14 @@
-﻿
-<section id="projects" class="projects">
+﻿@page "/projects"
+
+
+<section class="projects">
     <div class="container">
-         <TitleComponent Title="Recent Work" CssClass="title" />
+        <div class="return-btn">
+            <a href="/" class="btn btn-back"><i class="fa-regular fa-arrow-left"></i>Back</a>
+        </div>
         <div class="title-section">
             <div class="titles">
-                <h3>Some of my favorite projects.</h3>
-            </div>
-            <div class="btn-view-all">
-                <NavLink href="/projects" class="btn btn-secondary">View All Projects<i class="fa-solid fa-arrow-up-right"></i></NavLink>
+                <h3>Projects</h3>
             </div>
         </div>
 
@@ -25,7 +26,7 @@
 
     protected override void OnInitialized()
     {
-       projects = ProjectService.GetProjects();
+        projects = ProjectService.GetProjects();
     }
 
 

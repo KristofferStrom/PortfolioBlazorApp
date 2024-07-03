@@ -120,6 +120,18 @@ html {
   border-color: var(--color-text-primary);
 }
 
+.btn-back {
+  background: transparent;
+  border: none;
+  color: var(--color-theme);
+}
+.btn-back i {
+  margin-right: 5px;
+}
+.btn-back:hover, .btn-back:focus {
+  color: var(--color-theme-o);
+}
+
 .theme-switch label {
   font-size: 0.8rem;
   font-weight: 400;
@@ -686,7 +698,6 @@ html {
 .header {
   background-color: var(--color-primary);
   padding: 10px 0;
-  position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
@@ -730,6 +741,7 @@ html {
   opacity: 0;
   animation: slideInFromRight 0.8s ease-out forwards;
   transition: color 0.5s ease-in-out;
+  cursor: pointer;
 }
 .header .container .nav-menu .nav-link:nth-child(1) {
   animation-delay: 0.3s;
@@ -766,6 +778,14 @@ html {
     opacity: 1;
   }
 }
+.to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1050;
+  display: none;
+}
+
 footer {
   padding: 20px;
 }
@@ -1105,8 +1125,8 @@ footer .container a, footer .container p {
     text-align: left;
   }
 }
-.projects .container .title-section .btn-view-all {
-  display: none;
+.projects .container .title-section .btn-view-all i {
+  margin-left: 5px;
 }
 .projects .container .projects-section {
   display: grid;

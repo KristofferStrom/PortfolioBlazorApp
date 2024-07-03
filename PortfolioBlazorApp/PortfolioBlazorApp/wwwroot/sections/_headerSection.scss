@@ -3,7 +3,7 @@
 .header {
     background-color: var(--color-primary);
     padding: 10px 0;
-    position: fixed;
+
     top: 0;
     width: 100%;
     z-index: 1000;
@@ -55,6 +55,7 @@
                 opacity: 0;
                 animation: slideInFromRight 0.8s ease-out forwards;
                 transition: color 0.5s ease-in-out;
+                cursor: pointer;
 
                 @for $i from 1 through 4 {
                     &:nth-child(#{$i}) {
@@ -96,3 +97,14 @@
         opacity: 1;
     }
 }
+
+.to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1050; // Se till att den är över andra element
+    display: none; // Dölj som standard
+}
+
+
+
