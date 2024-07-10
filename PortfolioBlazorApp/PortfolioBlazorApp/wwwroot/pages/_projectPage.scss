@@ -1,0 +1,67 @@
+﻿.project-details {
+    margin-top: 50px;
+
+    .container {
+
+        .first-section {
+            height: 100vh;
+
+            .title-section {
+                margin-bottom: 20px;
+
+                h1 {
+                    font-size: 2.2rem;
+                }
+            }
+
+            .overview-section {
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+                background-color: var(--color-gray-medium);
+                padding: 20px 30px;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+
+                .main-overview {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .overview-description {
+                        p {
+                        }
+                    }
+
+                    .overview-img {
+                        display: flex;
+                        justify-content: flex-end;
+
+                        img {
+                            width: 60%;
+                            border-radius: 8px;
+                        }
+                    }
+                }
+
+                .tags {
+                    font-size: 0.7rem;
+                    display: flex;
+                    flex-wrap: wrap;
+                    max-width: fit-content;
+                    gap: 15px; // Lägger till lite utrymme mellan tags
+
+
+                    span {
+                        color: var(--color-text-primary);
+                        white-space: nowrap;
+                        background-color: var(--color-primary);
+                        padding: 3px 7px;
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+                    }
+                }
+            }
+        }
+    }
+}

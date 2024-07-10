@@ -348,10 +348,6 @@ html {
   height: 50px;
   align-items: center;
 }
-.dropdown div.focus {
-  border-start-end-radius: 8px;
-  border-start-start-radius: 8px;
-}
 .dropdown div span {
   position: absolute;
   top: -6px;
@@ -374,13 +370,11 @@ html {
   width: 100%;
   border: 1.5px solid white;
   border-top: 0;
-  border-end-end-radius: 8px;
-  border-end-start-radius: 8px;
   z-index: 100;
   text-align: center;
   top: 32px;
   transform: translateY(-1%);
-  transition: transform 0.6s ease-in, max-height 0.6s ease-in;
+  transition: transform 0.3s ease-in, max-height 0.3s ase-in;
   max-height: 0;
   overflow: hidden;
   padding-bottom: 10px;
@@ -1275,3 +1269,52 @@ footer .container a, footer .container p {
 .modal-open {
     overflow: hidden;
 }*/
+.project-details {
+  margin-top: 50px;
+}
+.project-details .container .first-section {
+  height: 100vh;
+}
+.project-details .container .first-section .title-section {
+  margin-bottom: 20px;
+}
+.project-details .container .first-section .title-section h1 {
+  font-size: 2.2rem;
+}
+.project-details .container .first-section .overview-section {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  background-color: var(--color-gray-medium);
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.project-details .container .first-section .overview-section .main-overview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  align-items: center;
+}
+.project-details .container .first-section .overview-section .main-overview .overview-img {
+  display: flex;
+  justify-content: flex-end;
+}
+.project-details .container .first-section .overview-section .main-overview .overview-img img {
+  width: 60%;
+  border-radius: 8px;
+}
+.project-details .container .first-section .overview-section .tags {
+  font-size: 0.7rem;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: fit-content;
+  gap: 15px;
+}
+.project-details .container .first-section .overview-section .tags span {
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  background-color: var(--color-primary);
+  padding: 3px 7px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}

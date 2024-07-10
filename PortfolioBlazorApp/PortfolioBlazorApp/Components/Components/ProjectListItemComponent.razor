@@ -1,4 +1,6 @@
-﻿<div class="project @CssClass">
+﻿
+
+<div class="project @CssClass">
     <a class="img-section" href="/project/@Model.Id">
         <img src="@Model.ImageSrc" alt="@Model.Title" />
         <div class="overlay">
@@ -24,6 +26,8 @@
 @code {
     [Parameter] public ProjectListItem Model { get; set; } = null!;
     [Parameter] public string CssClass { get; set; } = "";
+
+
 }
 
 

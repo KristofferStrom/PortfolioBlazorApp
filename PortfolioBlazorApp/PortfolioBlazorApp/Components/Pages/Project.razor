@@ -1,7 +1,47 @@
-﻿@page "/project"
+﻿@page "/project/{Id}"
 
-<h3>Project</h3>
+<section class="project-details">
+    <div class="container">
+        @if(project == null)
+        {
+            <h3>Project not found</h3>
+        }
+        else
+        {
+            <div class="first-section">
+                <div class="title-section">
+                    <h1>@project.Title</h1>
+                </div>
+                <div class="overview-section">
+                    <div class="main-overview">
+                        <div class="overview-description">
+                            <p>@project.Description</p>
+                        </div>
+                        <div class="overview-img">
+                            <img src="@project.ImageSrc" alt="@project.Title" />
+                        </div>
+                    </div>
+                    <div class="tags">
+                        @foreach (var tag in project.Includes)
+                        {
+                            <span>@tag</span>
+                        }
+                    </div>
+                </div>
+            </div>
+            
+        }
+    </div>
+</section>
 
 @code {
+    [Parameter]
+    public string Id { get; set; } = null!;
 
+    private ProjectModel? project;
+
+    protected override void OnInitialized()
+    {
+        project = ProjectService.GetById(Id);
+    }
 }

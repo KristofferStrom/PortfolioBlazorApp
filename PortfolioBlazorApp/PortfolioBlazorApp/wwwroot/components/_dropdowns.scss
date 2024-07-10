@@ -22,8 +22,7 @@
 
 
         &.focus {
-            border-start-end-radius: 8px;
-            border-start-start-radius: 8px;
+      
         }
 
 
@@ -93,13 +92,12 @@
     width: 100%;
     border: 1.5px solid white;
     border-top: 0;
-    border-end-end-radius: 8px;
-    border-end-start-radius: 8px;
+
     z-index: 100;
     text-align: center;
     top: 32px;
     transform: translateY(-1%);
-    transition: transform 0.6s ease-in, max-height 0.6s ease-in; // Behåller endast övergången för transform
+    transition: transform 0.3s ease-in, max-height 0.3s ase-in; // Behåller endast övergången för transform
     max-height: 0; // Startar med max-höjd 0 för att dölja innehållet
     overflow: hidden; // Förhindrar innehåll från att visas utanför max-höjd
     padding-bottom: 10px;
