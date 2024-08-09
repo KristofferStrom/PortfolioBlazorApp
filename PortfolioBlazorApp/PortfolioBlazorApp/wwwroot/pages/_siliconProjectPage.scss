@@ -1,0 +1,43 @@
+﻿.silicon-project {
+    margin-top: 20px;
+ 
+
+
+    .container {
+        p {
+            font-size: 0.9rem;
+            text-align: left;
+
+            a {
+                color: var(--color-theme);
+                text-decoration: underline;
+            }
+        }
+
+        .subscriber {
+            margin-top: 40px;
+        }
+
+        .images-identity {
+            margin-top: 30px;
+            margin-bottom: 40px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .image {
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+    }
+
+    img {
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+}

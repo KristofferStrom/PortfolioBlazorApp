@@ -17,28 +17,28 @@ public class ProjectService
             },
             new ProjectListItem
             {
-                Id = "Silicon2",
-                ImageSrc = "/images/laptop.jpg",
-                Title = "Project 2",
-                Tags = ["ASP.NET MVC", "Web Api", "Dependency injections", "Figma", "Services", "SqlServer", "Identity", "Javascript", "SASS", "Factories", "Repositories", "Generics"]
-
-            },
-            new ProjectListItem
-            {
-                Id = "Silicon3",
-                ImageSrc = "/images/laptop.jpg",
-                Title = "Project 3",
-                Tags = ["ASP.NET MVC", "Web Api", "Dependency injections", "Figma", "Services", "SqlServer", "Identity", "Javascript", "SASS", "Factories", "Repositories", "Generics"]
-
-            },
-            new ProjectListItem
-            {
-                Id = "Silicon4",
-                ImageSrc = "/images/laptop.jpg",
-                Title = "Project 3",
-                Tags = ["ASP.NET MVC", "Web Api", "Dependency injections", "Figma", "Services", "SqlServer", "Identity", "Javascript", "SASS", "Factories", "Repositories", "Generics"]
+                Id = "console-table",
+                ImageSrc = "/images/console-table.png",
+                Title = "Handball Players - Console Table",
+                Tags = ["C#", "Console", "Dependency injections", "Services", "Extension Methods", "Enums"]
 
             }
+            //new ProjectListItem
+            //{
+            //    Id = "Silicon3",
+            //    ImageSrc = "/images/laptop.jpg",
+            //    Title = "Project 3",
+            //    Tags = ["ASP.NET MVC", "Web Api", "Dependency injections", "Enums", "Services", "Extension Methods", "SASS", "Factories", "Repositories", "Generics"]
+
+            //},
+            //new ProjectListItem
+            //{
+            //    Id = "Silicon4",
+            //    ImageSrc = "/images/laptop.jpg",
+            //    Title = "Project 3",
+            //    Tags = ["ASP.NET MVC", "Web Api", "Dependency injections", "Figma", "Services", "SqlServer", "Identity", "Javascript", "SASS", "Factories", "Repositories", "Generics"]
+
+            //}
         ];
     }
 
@@ -48,7 +48,7 @@ public class ProjectService
         [
             new()
             {
-                Id = "Silicon",
+                Id = "silicon",
                 ImageSrc = "/images/silicon.png",
                 Title = "Silicon - .NET MVC Project",
                 Includes = ["ASP.NET MVC", "Web Api", "Dependency injections", "Figma", "Services", "SqlServer", "Identity", "Javascript", "SASS", "Factories", "Repositories", "Generics"],

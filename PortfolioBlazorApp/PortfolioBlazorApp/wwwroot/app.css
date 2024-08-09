@@ -650,14 +650,16 @@ html {
 }
 .custom-component .images .img {
   position: relative;
-  width: 350px;
   border: 1px solid var(--color-theme);
   padding: 40px;
   border-radius: 8px;
   padding: 17px;
+  height: 300px;
+  width: auto;
 }
 .custom-component .images .img img {
   width: 100%;
+  height: auto;
 }
 @media (min-width: 1200px) {
   .custom-component .images .img img {
@@ -1269,52 +1271,132 @@ footer .container a, footer .container p {
 .modal-open {
     overflow: hidden;
 }*/
-.project-details {
-  margin-top: 50px;
+.project-overview .title-section {
+  margin-bottom: -15px;
 }
-.project-details .container .first-section {
-  height: 100vh;
-}
-.project-details .container .first-section .title-section {
-  margin-bottom: 20px;
-}
-.project-details .container .first-section .title-section h1 {
+.project-overview .title-section h1 {
   font-size: 2.2rem;
+  text-align: center;
 }
-.project-details .container .first-section .overview-section {
+@media (min-width: 1200px) {
+  .project-overview .title-section h1 {
+    text-align: left;
+  }
+}
+.project-overview .overview-section {
   display: flex;
   flex-direction: column;
-  gap: 40px;
   background-color: var(--color-gray-medium);
   padding: 20px 30px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  gap: 20px;
 }
-.project-details .container .first-section .overview-section .main-overview {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-content: space-between;
+@media (min-width: 1200px) {
+  .project-overview .overview-section {
+    gap: 40px;
+  }
+}
+.project-overview .overview-section .main-overview {
   align-items: center;
 }
-.project-details .container .first-section .overview-section .main-overview .overview-img {
+@media (min-width: 1200px) {
+  .project-overview .overview-section .main-overview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+  }
+}
+.project-overview .overview-section .main-overview .overview-description p {
+  font-size: 1.1rem;
+}
+.project-overview .overview-section .main-overview .overview-img {
   display: flex;
   justify-content: flex-end;
 }
-.project-details .container .first-section .overview-section .main-overview .overview-img img {
+.project-overview .overview-section .main-overview .overview-img img {
   width: 60%;
   border-radius: 8px;
+  display: none;
 }
-.project-details .container .first-section .overview-section .tags {
+@media (min-width: 1200px) {
+  .project-overview .overview-section .main-overview .overview-img img {
+    display: block;
+  }
+}
+.project-overview .overview-section .tags {
   font-size: 0.7rem;
   display: flex;
   flex-wrap: wrap;
   max-width: fit-content;
   gap: 15px;
 }
-.project-details .container .first-section .overview-section .tags span {
+.project-overview .overview-section .tags span {
   color: var(--color-text-primary);
   white-space: nowrap;
   background-color: var(--color-primary);
   padding: 3px 7px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.content-layout {
+  background-color: var(--color-gray-medium);
+  padding: 20px 30px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+}
+.content-layout a {
+  color: var(--color-theme);
+  text-decoration: underline;
+}
+.content-layout p {
+  font-size: 0.9rem;
+}
+.content-layout .video {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.content-layout .video video {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.silicon-project {
+  margin-top: 20px;
+}
+.silicon-project .container p {
+  font-size: 0.9rem;
+  text-align: left;
+}
+.silicon-project .container p a {
+  color: var(--color-theme);
+  text-decoration: underline;
+}
+.silicon-project .container .subscriber {
+  margin-top: 40px;
+}
+.silicon-project .container .images-identity {
+  margin-top: 30px;
+  margin-bottom: 40px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  justify-content: center;
+}
+.silicon-project .container .image {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+.silicon-project img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

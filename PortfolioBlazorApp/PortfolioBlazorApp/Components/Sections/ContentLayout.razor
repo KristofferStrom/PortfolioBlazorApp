@@ -1,0 +1,9 @@
+﻿@* Components/ContentLayout.razor *@
+<div class="content-layout">
+    @ChildContent
+</div>
+
+@code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+}

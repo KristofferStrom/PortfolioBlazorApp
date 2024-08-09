@@ -116,7 +116,6 @@
 
 
             h5 {
-
                 text-align: left;
             }
 
@@ -131,7 +130,7 @@
         margin-top: -50px;
         gap: 225px;
         animation-delay: 4s;
-      
+
 
         @include xl {
             display: flex;
@@ -158,13 +157,16 @@
 
         .img {
             position: relative;
-            width: 350px;
+
             @include box;
             padding: 17px;
+            height: 300px;
+            width: auto;
 
 
             img {
                 width: 100%;
+                height: auto;
 
                 @include xl {
                     padding: 15px;

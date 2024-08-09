@@ -1,0 +1,79 @@
+﻿.project-overview {
+
+
+    .title-section {
+        margin-bottom: -15px;
+
+        h1 {
+            font-size: 2.2rem;
+            text-align: center;
+
+            @include xl {
+                text-align: left;
+            }
+        }
+    }
+
+    .overview-section {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--color-gray-medium);
+        padding: 20px 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+        gap: 20px;
+
+        @include xl {
+            gap: 40px;
+        }
+
+        .main-overview {
+            align-items: center;
+
+            @include xl {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                justify-content: space-between;
+            }
+
+            .overview-description {
+                p {
+                    font-size: 1.1rem;
+                 
+                }
+            }
+
+            .overview-img {
+                display: flex;
+                justify-content: flex-end;
+
+                img {
+                    width: 60%;
+                    border-radius: 8px;
+                    display: none;
+
+                    @include xl {
+                        display: block;
+                    }
+                }
+            }
+        }
+
+        .tags {
+            font-size: 0.7rem;
+            display: flex;
+            flex-wrap: wrap;
+            max-width: fit-content;
+            gap: 15px; // Lägger till lite utrymme mellan tags
+
+
+            span {
+                color: var(--color-text-primary);
+                white-space: nowrap;
+                background-color: var(--color-primary);
+                padding: 3px 7px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+            }
+        }
+    }
+}

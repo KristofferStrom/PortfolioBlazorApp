@@ -1,0 +1,33 @@
+﻿.content-layout {
+    background-color: var(--color-gray-medium);
+    padding: 20px 30px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+
+    a {
+        color: var(--color-theme);
+        text-decoration: underline;
+    }
+
+    p {
+        font-size: 0.9rem;
+
+    }
+
+    .video {
+        margin-top: 30px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        video {
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    }
+}

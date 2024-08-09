@@ -1,0 +1,37 @@
+﻿<section class="project-overview">
+    <div class="title-section">
+        <h1>@Title</h1>
+    </div>
+    <div class="overview-section">
+        <div class="main-overview">
+            <div class="overview-description">
+                <p>@Description</p>
+            </div>
+            <div class="overview-img">
+                <img src="@ImageSrc" alt="@Title" />
+            </div>
+        </div>
+        <div class="tags">
+            @foreach (var tag in Includes)
+            {
+                <span>@tag</span>
+            }
+        </div>
+    </div>
+</section>
+
+@code {
+
+    [Parameter]
+    public string Title { get; set; } = null!;
+
+    [Parameter]
+    public string Description { get; set; } = null!;
+
+    [Parameter]
+    public string ImageSrc { get; set; } = null!;
+
+    [Parameter]
+    public string[] Includes { get; set; } = [];
+
+}

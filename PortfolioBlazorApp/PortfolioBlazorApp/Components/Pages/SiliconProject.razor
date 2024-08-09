@@ -1,0 +1,47 @@
+﻿@page "/project/silicon"
+
+<section class="silicon-project">
+    <div class="container">
+        <div class="return-btn">
+            <ReturnButton Fragment="projects" />
+        </div>
+        <ProjectOverviewSection 
+            Title="Silicon - .NET MVC Project"
+            Description="A school project where I was tasked with creating a website based on a given Figma template. 
+                            "
+            ImageSrc="/images/silicon.png"
+            Includes='["ASP.NET MVC", "Web Api", "Dependency injections", "Figma", "Services", "SqlServer", "Identity", "Javascript", "SASS", "Factories", "Repositories", "Generics"]'
+         />
+         <ContentLayout>
+           
+             <p>
+                The goal was to apply the techniques we have learned during the course, such as Entity Framework Core,
+                various design patterns like service pattern, repository pattern, dependency injections, and factory pattern,
+                as well as integrating the backend with frontend.
+             </p>
+                <p>
+                The framework I used is ASP.NET MVC with a SASS structure for the CSS part. 
+                Some JavaScript is also used, mainly for form validation with regular expressions. 
+                Microsoft Identity is used for account registration and login, and it also verifies if a user is authorized to access a specific page.
+                There is also a web API that handles the registration of users who wish to subscribe to the newsletter.
+             </p>
+           
+            <div class="video">
+                <video width="100%" controls>
+                    <source src="/videos/silicon.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <p>View in <a href="https://github.com/KristofferStrom/Silicon">Github</a> </p>
+         </ContentLayout>
+    </div>
+</section>
+
+@code {
+
+}
+
+
+
+

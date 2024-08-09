@@ -3,21 +3,19 @@
 
         <div class="title-section">
             <h1>@displayText<span class="blink">|</span></h1>
-
-
         </div>
 
         <div class="content-section @(showContentSection ? "fade-in" : "hidden")">
             <h3>Hello, I’m Kristoffer Ström</h3>
             <p>
-                I’m from Singapore and I have been working as a Product Designer for more than 7 years.
-                I’ve worked for a Hanziree company Pabloo as a Product Designer and Front-end Developer for 3 years.
+                I am a second-year .NET development student at Nackademin in Stockholm.
+                I am currently seeking an internship (LIA) for the period December 2nd to April 18th.
             </p>
         </div>
 
         <div class="btn-section @(showBtnSection ? "show" : "hidden")">
             <a href="mailto:kristoffer.strom@hotmail.se" class="btn btn-theme btn-email"><i class="fa-sharp fa-regular fa-envelope"></i>Email Me</a>
-            <a class="btn btn-secondary"> <i class="fa-regular fa-download btn-download"></i>Download CV</a>
+            <a href="/files/CV.pdf" class="btn btn-secondary" download> <i class="fa-solid fa-download"></i>Download CV</a>
         </div>
 
     </div>
@@ -42,7 +40,7 @@
                 StateHasChanged();
                 await Task.Delay(100);
 
-                if(i == fullText.Length - 1)
+                if (i == fullText.Length - 1)
                 {
                     cursorVisible = true;
                     await Task.Delay(1000);
@@ -53,7 +51,6 @@
                     StateHasChanged();
                 }
             }
-            
         }
     }
 }

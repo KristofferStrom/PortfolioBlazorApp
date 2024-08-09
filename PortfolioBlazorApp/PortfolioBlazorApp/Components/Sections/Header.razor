@@ -40,7 +40,7 @@
     }
     private void UpdateIsHomePage()
     {
-        isHomePage = NavigationManager.Uri == NavigationManager.BaseUri;
+        isHomePage = NavigationManager.Uri == NavigationManager.BaseUri || NavigationManager.Uri == NavigationManager.BaseUri + "#projects";
         StateHasChanged();
     }
 

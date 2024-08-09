@@ -36,9 +36,8 @@
                 ImgDescription_2="This code specifies a generic table model as HandballPlayerModel. During initialization, players are loaded into the Items list. Column headers are set in a dictionary, mapping each model property to a header, which allows for flexible naming of the headers."
                 CssClass="div-custom-component" 
                 Style="@(_componentToDisplay == "Table" ? "" : "display:none")" 
-                Title="Custom Table" 
-                Description="Due to difficulties styling select elements in Razor code, I have created this generic dropdown component."
-            >
+                Title="Custom Table"
+                Description="To avoid repetitive code and save time on design, I created a generic table with a sorting function.">
                 <div class="table-component">
                     <Table Model="_model" ColumnWidths='["30%", "30%", "30%"]' />
                 </div>

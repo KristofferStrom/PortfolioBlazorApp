@@ -1,0 +1,32 @@
+﻿@page "/project/console-table"
+
+<section class="table-project">
+    <div class="container">
+        <div class="return-btn">
+            <ReturnButton Fragment="projects" />
+        </div>
+        <ProjectOverviewSection Title="Handball Players - Console Table"
+                                Description="A side project where I created an editable console table, aiming to make it as dynamic as possible."
+                                ImageSrc="/images/console-table.png"
+                                Includes='["C#", "Console", "Dependency injections", "Services", "Extension Methods", "Enums"]' />
+        <ContentLayout>
+
+            <p>
+                After struggling in several console projects to present data in a visually appealing way, I discovered a method where I treat each data value as its own cell within a table. This allowed me to create a reusable and scalable table. I decided to refine this further and created a project where users can edit the table. For example, you can adjust the cell lengths, and since all cells follow the same rules, they always stay in position.
+            </p>
+
+            <div class="video">
+                <video width="100%" controls>
+                    <source src="/videos/ConsoleTable.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <p>View in <a href="https://github.com/KristofferStrom/HandballPlayerList_Dynamic_Editing">Github</a></p>
+        </ContentLayout>
+    </div>
+</section>
+
+@code {
+
+}
