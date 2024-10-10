@@ -1,0 +1,32 @@
+﻿@page "/project/quickiequiz"
+
+<section class="table-project">
+    <div class="container">
+        <div class="return-btn">
+            <ReturnButton Fragment="projects" />
+        </div>
+        <ProjectOverviewSection Title="Quickie Quiz - Fullstack project"
+                                Description="A project where I use the API from Open Trivia Database to build a quiz."
+                                ImageSrc="/images/quickiequiz.png"
+                                Includes='["jQuery", "Javascript", "MVC", "SqlServer", "API", "Azure"]' />
+        <ContentLayout>
+
+            <p>
+                This was a group project in a frontend course where the task was to use any API to build whatever we wanted. After exploring different APIs, we decided to create a quiz. One thing led to another, and we quickly realized the benefits of adding a backend, allowing us to challenge others and save scores on a highscore list. I was responsible for most of the logic, while my talented colleague, Carl Korsgren, focused on the design. The project was a success, and we deployed it via Azure, watching as the highscore list filled up.
+            </p>
+
+            <div class="video">
+                <video width="100%" controls>
+                    <source src="/videos/quickiequiz.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <p>View the API we used <a href="https://github.com/KristofferStrom/HandballPlayerList_Dynamic_Editing">here</a></p>
+        </ContentLayout>
+    </div>
+</section>
+
+@code {
+
+}

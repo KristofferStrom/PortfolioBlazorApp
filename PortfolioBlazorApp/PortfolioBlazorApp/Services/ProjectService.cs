@@ -22,47 +22,39 @@ public class ProjectService
                 Title = "Handball Players - Console Table",
                 Tags = ["C#", "Console", "Dependency injections", "Services", "Extension Methods", "Enums"]
 
+            },
+            new ProjectListItem
+            {
+                Id = "quickiequiz",
+                ImageSrc = "/images/quickiequiz.png",
+                Title = "Quickie Quiz - Fullstack project",
+                Tags = ["jQuery", "Javascript", "MVC", "SqlServer", "API", "Azure"]
             }
-            //new ProjectListItem
-            //{
-            //    Id = "Silicon3",
-            //    ImageSrc = "/images/laptop.jpg",
-            //    Title = "Project 3",
-            //    Tags = ["ASP.NET MVC", "Web Api", "Dependency injections", "Enums", "Services", "Extension Methods", "SASS", "Factories", "Repositories", "Generics"]
 
-            //},
-            //new ProjectListItem
-            //{
-            //    Id = "Silicon4",
-            //    ImageSrc = "/images/laptop.jpg",
-            //    Title = "Project 3",
-            //    Tags = ["ASP.NET MVC", "Web Api", "Dependency injections", "Figma", "Services", "SqlServer", "Identity", "Javascript", "SASS", "Factories", "Repositories", "Generics"]
-
-            //}
         ];
     }
 
-    public List<ProjectModel> GetProjectModels()
-    {
-        return
-        [
-            new()
-            {
-                Id = "silicon",
-                ImageSrc = "/images/silicon.png",
-                Title = "Silicon - .NET MVC Project",
-                Includes = ["ASP.NET MVC", "Web Api", "Dependency injections", "Figma", "Services", "SqlServer", "Identity", "Javascript", "SASS", "Factories", "Repositories", "Generics"],
-                Description = "This is a project description bla bla bla blal This is a project description bla bla bla blal This is a project description bla bla bla blal This is a project description bla bla bla blal",
-            },
+    //public List<ProjectModel> GetProjectModels()
+    //{
+    //    return
+    //    [
+    //        new()
+    //        {
+    //            Id = "silicon",
+    //            ImageSrc = "/images/silicon.png",
+    //            Title = "Silicon - .NET MVC Project",
+    //            Includes = ["ASP.NET MVC", "Web Api", "Dependency injections", "Figma", "Services", "SqlServer", "Identity", "Javascript", "SASS", "Factories", "Repositories", "Generics"],
+    //            Description = "This is a project description bla bla bla blal This is a project description bla bla bla blal This is a project description bla bla bla blal This is a project description bla bla bla blal",
+    //        },
 
            
-        ];
+    //    ];
        
-    }
+    //}
 
-    public ProjectModel GetById(string id)
-    {
-        var project = GetProjectModels().FirstOrDefault(x => x.Id == id);
-        return project ?? null!;
-    }
+    //public ProjectModel GetById(string id)
+    //{
+    //    var project = GetProjectModels().FirstOrDefault(x => x.Id == id);
+    //    return project ?? null!;
+    //}
 }

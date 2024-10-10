@@ -230,7 +230,7 @@ html {
   height: auto;
   object-fit: cover;
   object-position: center;
-  filter: grayscale(100%) brightness(100%);
+  /*  filter: grayscale(100%) brightness(100%);*/
 }
 @media (min-width: 1200px) {
   .project .img-section img {
