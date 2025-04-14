@@ -29,6 +29,13 @@ public class ProjectService
                 ImageSrc = "/images/quickiequiz.png",
                 Title = "Quickie Quiz - Fullstack project",
                 Tags = ["jQuery", "Javascript", "MVC", "SqlServer", "API", "Azure"]
+            },
+             new ProjectListItem
+            {
+                Id = "bookbuddy",
+                ImageSrc = "/images/bookbuddy.png",
+                Title = "BookBuddy - Optimizely/OpenAI project",
+                Tags = ["CMS", "Optimizely", "Open AI", "Blazor", "Scheduled jobs", "SqlServer", "Identity", "SASS"]
             }
 
         ];

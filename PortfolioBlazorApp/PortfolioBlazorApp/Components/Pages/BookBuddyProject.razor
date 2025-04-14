@@ -1,0 +1,42 @@
+﻿@page "/project/bookbuddy"
+
+<section class="silicon-project">
+    <div class="container">
+        <div class="return-btn">
+            <ReturnButton Fragment="projects" />
+        </div>
+        <ProjectOverviewSection 
+            Title="BookBuddy - Optimizely Project"
+            Description="A group project where we built an Optimizely application that allowed editors to generate a quiz for a book with a single click."
+            ImageSrc="/images/bookbuddy.png"
+            Includes='["CMS", "Optimizely", "Open AI", "Blazor", "Scheduled jobs", "SqlServer", "Identity", "SASS"]'
+         />
+         <ContentLayout>
+
+            <p>
+                This was a group project where we developed an Episerver application that allows editors to generate quizzes for public domain books.
+                The editor selects a title from a list of available books — sourced from the Gutenberg Project via an API — and with a single click, a quiz is generated for each chapter.
+            </p>
+            <p>
+                The application fetches the full book text chapter by chapter and sends it to OpenAI’s API, which returns multiple-choice questions based on the content of each chapter.
+                The focus was on integrating external APIs, working with CMS functionalities, and automating content generation to simplify the editor’s workflow.
+            </p>
+           
+            <div class="video">
+                <video width="100%" controls>
+                    <source src="/videos/bookbuddy.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+         </ContentLayout>
+    </div>
+</section>
+
+@code {
+
+}
+
+
+
+
